@@ -1,0 +1,392 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * MFT Courier — "Kinetic Logistics" design system.
+ * Editorial warm-white surfaces alternating with cinematic near-black,
+ * an electric lime interaction accent and a restrained cool blue.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 3px);
+  --radius-md: calc(var(--radius) - 1px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 14px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand surfaces */
+  --color-ink: var(--ink);
+  --color-graphite: var(--graphite);
+  --color-slate-deep: var(--slate-deep);
+  --color-paper: var(--paper);
+  --color-paper-dim: var(--paper-dim);
+  --color-lime: var(--lime);
+  --color-lime-dim: var(--lime-dim);
+  --color-cobalt: var(--cobalt);
+  --color-hairline: var(--hairline);
+  --color-hairline-dark: var(--hairline-dark);
+  
+  /* Noir Champagne aliases */
+  --color-noir: var(--noir);
+  --color-obsidian: var(--obsidian);
+  --color-charcoal: var(--charcoal);
+  --color-ivory: var(--ivory);
+  --color-warm-gray: var(--warm-gray);
+  --color-dark-gray: var(--dark-gray);
+  --color-champagne: var(--champagne);
+  --color-champagne-light: var(--champagne-light);
+  --color-luxury-red: var(--luxury-red);
+  --color-muted-green: var(--muted-green);
+
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --ease-kinetic: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* NOIR CHAMPAGNE Luxury Palette - DARK MODE */
+  --noir: #0F1011;          /* Slightly lighter - was #090A0A */
+  --obsidian: #171819;      /* Slightly lighter - was #121313 */
+  --charcoal: #1F2021;      /* Slightly lighter - was #171918 */
+  --ivory: #F2ECE1;
+  --warm-gray: #9A968E;
+  --dark-gray: #2A2B29;
+  --champagne: #C8A979;
+  --champagne-light: #E3CFAB;
+  --luxury-red: #D94A4A;
+  --muted-green: #48B982;
+
+  /* Legacy aliases for compatibility */
+  --ink: var(--ivory);
+  --graphite: var(--obsidian);
+  --slate-deep: var(--charcoal);
+  --paper: var(--noir);
+  --paper-dim: var(--obsidian);
+  --lime: var(--champagne);
+  --lime-dim: var(--champagne);
+  --cobalt: #5A7FB8;
+  --hairline: var(--dark-gray);
+  --hairline-dark: rgba(255, 255, 255, 0.08);
+
+  --background: var(--noir);
+  --foreground: var(--ivory);
+  --card: var(--charcoal);
+  --card-foreground: var(--ivory);
+  --popover: var(--charcoal);
+  --popover-foreground: var(--ivory);
+  --primary: var(--champagne);
+  --primary-foreground: var(--noir);
+  --secondary: var(--obsidian);
+  --secondary-foreground: var(--ivory);
+  --muted: var(--obsidian);
+  --muted-foreground: var(--warm-gray);
+  --accent: var(--champagne);
+  --accent-foreground: var(--noir);
+  --destructive: var(--luxury-red);
+  --destructive-foreground: var(--ivory);
+  --border: var(--dark-gray);
+  --input: var(--dark-gray);
+  --ring: var(--champagne);
+}
+
+/* LIGHT MODE - Clean & Elegant */
+:root.light {
+  --noir: #FFFFFF;
+  --obsidian: #F8F9FA;
+  --charcoal: #F0F2F1;
+  --ivory: #1A1F1E;
+  --warm-gray: #5A6360;
+  --dark-gray: #E0E3E1;
+  --champagne: #A67C52;
+  --champagne-light: #C8A979;
+  --luxury-red: #D94A4A;
+  --muted-green: #48B982;
+
+  --ink: var(--ivory);
+  --graphite: var(--obsidian);
+  --slate-deep: var(--charcoal);
+  --paper: var(--noir);
+  --paper-dim: var(--obsidian);
+  --lime: var(--champagne);
+  --lime-dim: var(--champagne);
+  --hairline: var(--dark-gray);
+  --hairline-dark: rgba(0, 0, 0, 0.08);
+
+  --background: var(--noir);
+  --foreground: var(--ivory);
+  --card: var(--charcoal);
+  --card-foreground: var(--ivory);
+  --popover: var(--charcoal);
+  --popover-foreground: var(--ivory);
+  --primary: var(--champagne);
+  --primary-foreground: var(--noir);
+  --secondary: var(--obsidian);
+  --secondary-foreground: var(--ivory);
+  --muted: var(--obsidian);
+  --muted-foreground: var(--warm-gray);
+  --accent: var(--champagne);
+  --accent-foreground: var(--noir);
+  --destructive: var(--luxury-red);
+  --destructive-foreground: var(--ivory);
+  --border: var(--dark-gray);
+  --input: var(--dark-gray);
+  --ring: var(--champagne);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "ss01";
+  }
+
+  ::selection {
+    background: var(--lime);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--lime-dim);
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+/* ---------- Editorial type scale ---------- */
+
+@utility display-xl {
+  font-size: clamp(2.85rem, 8.4vw, 8.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+}
+
+@utility display-lg {
+  font-size: clamp(2.35rem, 5.6vw, 5.25rem);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+}
+
+@utility display-md {
+  font-size: clamp(1.75rem, 3.2vw, 3rem);
+  line-height: 1.02;
+  letter-spacing: -0.032em;
+  font-weight: 500;
+}
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@utility data-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+@utility lede {
+  font-size: clamp(1.0625rem, 1.35vw, 1.3125rem);
+  line-height: 1.55;
+  letter-spacing: -0.012em;
+}
+
+/* ---------- Surfaces & texture ---------- */
+
+@utility surface-dark {
+  background-color: var(--ink);
+  color: var(--paper);
+  --border: var(--hairline-dark);
+  --muted-foreground: oklch(0.72 0.01 240);
+}
+
+@utility grain {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.42;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.36'/%3E%3C/svg%3E");
+  }
+}
+
+@utility hairline-grid {
+  background-image:
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+
+@utility rule-t {
+  border-top: 1px solid var(--color-border);
+}
+
+@utility edge {
+  padding-inline: clamp(1.25rem, 5vw, 5.5rem);
+}
+
+@utility shell {
+  width: 100%;
+  max-width: 96rem;
+  margin-inline: auto;
+}
+
+/* ---------- Motion ---------- */
+
+/* Orbit/Rotate animation - rings ko ghoomata hai */
+@keyframes eza-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scan animation - globe ke andar line move karti hai */
+@keyframes eza-scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(400%);
+  }
+}
+
+/* Float animation for nodes */
+@keyframes eza-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* Pulse animation for dots */
+@keyframes eza-pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(200, 169, 121, 0.6);
+  }
+  50% {
+    opacity: 0.65;
+    box-shadow: 0 0 0 8px transparent;
+  }
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility marquee-track {
+  animation: marquee-x 38s linear infinite;
+  will-change: transform;
+}
+
+@keyframes pulse-node {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.9);
+  }
+}
+
+@utility status-dot {
+  position: relative;
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: var(--lime-dim);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: var(--lime-dim);
+    animation: pulse-node 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+@utility route-flow {
+  stroke-dasharray: 6 10;
+  animation: dash-flow 24s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
