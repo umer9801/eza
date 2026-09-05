@@ -50,7 +50,7 @@ export function Navbar() {
             <span className="text-[1.6rem] font-semibold leading-none tracking-[-0.06em]">
               EZA
             </span>
-            <span className="label-mono hidden text-[0.58rem] text-muted-foreground sm:block">
+            <span className="label-mono hidden text-[0.58rem] text-muted-foreground md:block">
               Logistics
             </span>
           </Link>
@@ -88,7 +88,7 @@ export function Navbar() {
             </div>
             <a
               href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-              className="data-mono text-[0.8rem] text-ink/70 transition-colors hover:text-ink md:block"
+              className="hidden data-mono text-[0.8rem] text-ink/70 transition-colors hover:text-ink md:block"
             >
               {CONTACT.phone}
             </a>

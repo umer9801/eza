@@ -1,16 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import MinimalHeroAnimation from "@/components/site/MinimalHeroAnimation";
 import { GlobeAnimation } from "@/components/site/GlobeAnimation";
 import { RouteTicker } from "@/components/site/RouteTicker";
-import { ServiceExplorer } from "@/components/site/ServiceExplorer";
-import { CoverageMap } from "@/components/site/CoverageMap";
-import { StatsSection } from "@/components/site/StatsSection";
-import { IndustryCarousel } from "@/components/site/IndustryStory";
 import { MagneticButton, ArrowGlyph, SectionLabel, Reveal, SplitHeading } from "@/components/site/primitives";
 import { CONTACT } from "@/lib/site-data";
 import { motion } from "motion/react";
+
+const ServiceExplorer = lazy(() =>
+  import("@/components/site/ServiceExplorer").then(({ ServiceExplorer }) => ({
+    default: ServiceExplorer,
+  })),
+);
+const CoverageMap = lazy(() =>
+  import("@/components/site/CoverageMap").then(({ CoverageMap }) => ({
+    default: CoverageMap,
+  })),
+);
+const StatsSection = lazy(() =>
+  import("@/components/site/StatsSection").then(({ StatsSection }) => ({
+    default: StatsSection,
+  })),
+);
+const IndustryCarousel = lazy(() =>
+  import("@/components/site/IndustryStory").then(({ IndustryCarousel }) => ({
+    default: IndustryCarousel,
+  })),
+);
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -45,7 +63,7 @@ function Index() {
               className="display-xl mt-8 max-w-5xl text-ink"
             />
             <Reveal delay={0.55} y={18}>
-              <p className="lede mt-8 max-w-2xl text-ink/70">
+              <p className="lede mt-8 max-w-2xl text-ink/70 hidden md:block">
                 Same-day courier, next-day delivery, freight, fulfilment and international shipping
                 — from a Littleborough hub built around real operational pressure, not industry averages.
               </p>
@@ -210,7 +228,9 @@ function Index() {
             </Reveal>
             <Reveal delay={0.35}>
               <div className="mt-14">
-                <ServiceExplorer />
+                <Suspense fallback={null}>
+                  <ServiceExplorer />
+                </Suspense>
               </div>
             </Reveal>
           </div>
@@ -239,14 +259,18 @@ function Index() {
             </Reveal>
             <Reveal delay={0.35}>
               <div className="mt-14">
-                <CoverageMap withSearch />
+                <Suspense fallback={null}>
+                  <CoverageMap withSearch />
+                </Suspense>
               </div>
             </Reveal>
           </div>
         </section>
 
         {/* Stats */}
-        <StatsSection />
+        <Suspense fallback={null}>
+          <StatsSection />
+        </Suspense>
 
         {/* Industries */}
         <section className="py-24 md:py-32">
@@ -269,7 +293,9 @@ function Index() {
             </Reveal>
           </div>
           <div className="mt-14">
-            <IndustryCarousel />
+            <Suspense fallback={null}>
+              <IndustryCarousel />
+            </Suspense>
           </div>
         </section>
 

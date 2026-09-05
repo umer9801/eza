@@ -34,7 +34,7 @@ function ServicePage() {
       <Navbar />
       <main className="min-h-screen pt-[5.5rem]">
         {/* Hero */}
-        <section className="grain relative overflow-hidden bg-ink py-16 md:py-24">
+        <section className="grain relative overflow-hidden bg-charcoal py-16 md:py-24">
           <div className="shell edge relative z-[2]">
             <Reveal>
               <SectionLabel tone="light" index={service.index}>
@@ -42,12 +42,12 @@ function ServicePage() {
               </SectionLabel>
             </Reveal>
             <Reveal delay={0.1}>
-              <h1 className="display-xl mt-7 max-w-4xl text-paper">
+              <h1 className="display-xl mt-7 max-w-4xl text-ivory">
                 {service.hero}
               </h1>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="lede mt-6 max-w-2xl text-paper/70">
+              <p className="lede mt-6 max-w-2xl text-ivory/70">
                 {service.blurb}
               </p>
             </Reveal>
@@ -74,7 +74,7 @@ function ServicePage() {
                     key={stat.label}
                     value={stat.value}
                     label={stat.label}
-                    className="border-paper/20"
+                    className="border-ivory/20"
                   />
                 ))}
               </div>
@@ -228,18 +228,18 @@ function ServicePage() {
         </section>
 
         {/* CTA */}
-        <section className="grain relative overflow-hidden bg-ink py-24 md:py-32">
+        <section className="grain relative overflow-hidden bg-charcoal py-24 md:py-32">
           <div className="shell edge relative z-[2]">
             <Reveal>
               <SectionLabel tone="light">Get started</SectionLabel>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="display-lg mt-7 max-w-3xl text-paper">
+              <h2 className="display-lg mt-7 max-w-3xl text-ivory">
                 Ready to book {service.name.toLowerCase()}?
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="lede mt-6 max-w-2xl text-paper/60">
+              <p className="lede mt-6 max-w-2xl text-ivory/60">
                 Quote back within the hour. Transparent pricing, clear lead times, and a named
                 contact who can track your shipment from collection through to delivery.
               </p>

@@ -62,7 +62,7 @@ export function SectionLabel({
     <div
       className={cn(
         "label-mono flex items-center gap-3",
-        tone === "dark" ? "text-muted-foreground" : "text-paper/55",
+        tone === "dark" ? "text-muted-foreground" : "text-ivory/55",
         className,
       )}
     >
