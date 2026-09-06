@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { CITIES, HUB, isKnownPostcode, postcodeArea } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
@@ -25,17 +25,17 @@ export function CoverageMap({
   };
 
   return (
-    <div className={cn("grid gap-px overflow-hidden border border-champagne/12 bg-obsidian lg:grid-cols-[1.25fr_1fr]", className)}>
-      <div className="relative bg-noir p-5 md:p-8">
+    <div className={cn("grid gap-px overflow-hidden border border-border bg-[#FAF3E7] lg:grid-cols-[1.25fr_1fr]", className)}>
+      <div className="relative bg-background p-5 md:p-8">
         <svg viewBox="0 0 100 100" className="h-[26rem] w-full md:h-[34rem]" role="img" aria-label="Map of UK coverage from the Manchester hub">
           <defs>
             <linearGradient id="cov-route" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0%" className="[stop-color:var(--champagne)]" />
+              <stop offset="0%" className="[stop-color:var(--primary)]" />
               <stop offset="100%" className="[stop-color:var(--champagne-light)]" />
             </linearGradient>
             <radialGradient id="cov-hub">
-              <stop offset="0%" className="[stop-color:var(--champagne)]" stopOpacity="0.4" />
-              <stop offset="100%" className="[stop-color:var(--champagne)]" stopOpacity="0" />
+              <stop offset="0%" className="[stop-color:var(--primary)]" stopOpacity="0.4" />
+              <stop offset="100%" className="[stop-color:var(--primary)]" stopOpacity="0" />
             </radialGradient>
           </defs>
 
@@ -47,7 +47,7 @@ export function CoverageMap({
               cy={HUB.y}
               r={r}
               fill="none"
-              className="stroke-ivory"
+              className="stroke-foreground"
               strokeOpacity="0.06"
               strokeDasharray="0.6 1.6"
             />
@@ -55,9 +55,9 @@ export function CoverageMap({
 
           <path 
             d={UK_OUTLINE} 
-            className="fill-ivory stroke-ivory" 
-            fillOpacity="0.03" 
-            strokeOpacity="0.16" 
+            className="fill-muted stroke-muted-foreground" 
+            fillOpacity="0.08" 
+            strokeOpacity="0.25" 
             strokeWidth="0.35" 
           />
 
@@ -70,7 +70,7 @@ export function CoverageMap({
                   d={d}
                   fill="none"
                   stroke={on ? "url(#cov-route)" : "currentColor"}
-                  className={on ? undefined : "text-ivory"}
+                  className={on ? undefined : "text-foreground"}
                   strokeOpacity={on ? 1 : 0.16}
                   strokeWidth={on ? 0.6 : 0.3}
                 />
@@ -130,11 +130,11 @@ export function CoverageMap({
         </svg>
       </div>
 
-      <div className="flex flex-col justify-between bg-charcoal p-6 md:p-9">
+      <div className="flex flex-col justify-between bg-[#F5EDE0] p-6 md:p-9">
         <div>
           <div className="flex items-center justify-between">
-            <span className="label-mono text-warm-gray">Selected route</span>
-            <span className="label-mono flex items-center gap-2 text-warm-gray">
+            <span className="label-mono text-muted-foreground">Selected route</span>
+            <span className="label-mono flex items-center gap-2 text-muted-foreground">
               <span className="status-dot" aria-hidden /> {city.status}
             </span>
           </div>
@@ -147,28 +147,28 @@ export function CoverageMap({
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="data-mono mt-6 text-[0.8rem] uppercase tracking-[0.14em] text-warm-gray">
-                Littleborough → {city.name}
+              <div className="data-mono mt-6 text-[0.8rem] uppercase tracking-[0.14em] text-muted-foreground">
+                Littleborough â†’ {city.name}
               </div>
               <div className="mt-3 flex items-baseline gap-2">
-                <span className="data-mono text-[3.2rem] leading-none tracking-[-0.04em] text-champagne">
+                <span className="data-mono text-[3.2rem] leading-none tracking-[-0.04em] text-primary">
                   {city.minutes < 120 ? city.minutes : Math.floor(city.minutes / 60)}
                 </span>
-                <span className="label-mono text-warm-gray">
+                <span className="label-mono text-muted-foreground">
                   {city.minutes < 120 ? "minutes" : `h ${city.minutes % 60}m typical`}
                 </span>
               </div>
 
-              <dl className="mt-8 space-y-px overflow-hidden bg-obsidian/50">
+              <dl className="mt-8 space-y-px overflow-hidden bg-[#FAF3E7]/50">
                 {[
                   ["Region", city.region],
                   ["Distance", `${city.miles} miles`],
                   ["Service", city.service],
                   ["Route status", city.status],
                 ].map(([k, v]) => (
-                  <div key={k} className="flex items-center justify-between bg-obsidian px-4 py-3">
-                    <dt className="label-mono text-warm-gray">{k}</dt>
-                    <dd className="data-mono text-[0.82rem] text-ivory">{v}</dd>
+                  <div key={k} className="flex items-center justify-between bg-[#FAF3E7] px-4 py-3">
+                    <dt className="label-mono text-muted-foreground">{k}</dt>
+                    <dd className="data-mono text-[0.82rem] text-foreground">{v}</dd>
                   </div>
                 ))}
               </dl>
@@ -178,7 +178,7 @@ export function CoverageMap({
 
         {withSearch ? (
           <form onSubmit={check} className="mt-9">
-            <label htmlFor="cov-pc" className="label-mono text-warm-gray">
+            <label htmlFor="cov-pc" className="label-mono text-muted-foreground">
               Check a postcode
             </label>
             <div className="mt-3 flex gap-2">
@@ -187,11 +187,11 @@ export function CoverageMap({
                 value={pc}
                 onChange={(e) => setPc(e.target.value)}
                 placeholder="e.g. LS1 4AP"
-                className="data-mono h-12 w-full rounded-sm border border-dark-gray bg-obsidian px-4 text-ivory uppercase placeholder:text-warm-gray focus:border-champagne focus:outline-none"
+                className="data-mono h-12 w-full rounded-sm border border-border bg-[#FAF3E7] px-4 text-foreground uppercase placeholder:text-muted-foreground focus:border-primary focus:outline-none"
               />
               <button
                 type="submit"
-                className="h-12 shrink-0 rounded-sm bg-champagne px-5 text-[0.8rem] font-medium text-noir transition-colors hover:bg-champagne-light"
+                className="h-12 shrink-0 rounded-sm bg-primary px-5 text-[0.8rem] font-medium text-noir transition-colors hover:bg-primary-light"
               >
                 Check
               </button>
@@ -202,17 +202,17 @@ export function CoverageMap({
                 animate={{ opacity: 1, y: 0 }}
                 className={cn(
                   "mt-4 text-[0.9rem]",
-                  checked.ok ? "text-champagne" : "text-warm-gray",
+                  checked.ok ? "text-primary" : "text-muted-foreground",
                 )}
               >
                 {checked.ok
-                  ? `Yes — we deliver to ${checked.area}. Same-day and next-day both available.`
-                  : "Speak to our team about this route — we cover it, we just want to plan it properly."}
+                  ? `Yes â€” we deliver to ${checked.area}. Same-day and next-day both available.`
+                  : "Speak to our team about this route â€” we cover it, we just want to plan it properly."}
               </motion.p>
             )}
           </form>
         ) : (
-          <p className="mt-9 text-[0.9rem] leading-relaxed text-warm-gray">
+          <p className="mt-9 text-[0.9rem] leading-relaxed text-muted-foreground">
             Times shown are typical door-to-door for a dedicated vehicle leaving the Littleborough hub,
             measured across the last twelve months of live jobs.
           </p>
@@ -221,3 +221,4 @@ export function CoverageMap({
     </div>
   );
 }
+

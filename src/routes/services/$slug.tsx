@@ -34,20 +34,20 @@ function ServicePage() {
       <Navbar />
       <main className="min-h-screen pt-[5.5rem]">
         {/* Hero */}
-        <section className="grain relative overflow-hidden bg-charcoal py-16 md:py-24">
+        <section className="relative overflow-hidden bg-primary/5 py-16 md:py-24">
           <div className="shell edge relative z-[2]">
             <Reveal>
-              <SectionLabel tone="light" index={service.index}>
+              <SectionLabel tone="dark" index={service.index}>
                 {service.name}
               </SectionLabel>
             </Reveal>
             <Reveal delay={0.1}>
-              <h1 className="display-xl mt-7 max-w-4xl text-ivory">
+              <h1 className="display-xl mt-7 max-w-4xl text-foreground">
                 {service.hero}
               </h1>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="lede mt-6 max-w-2xl text-ivory/70">
+              <p className="lede mt-6 max-w-2xl text-muted-foreground">
                 {service.blurb}
               </p>
             </Reveal>
@@ -74,7 +74,7 @@ function ServicePage() {
                     key={stat.label}
                     value={stat.value}
                     label={stat.label}
-                    className="border-ivory/20"
+                    className=""
                   />
                 ))}
               </div>
@@ -84,7 +84,7 @@ function ServicePage() {
             aria-hidden
             className="pointer-events-none absolute -bottom-24 left-1/2 h-[28rem] w-[60rem] -translate-x-1/2 rounded-[50%] opacity-[0.12]"
             style={{
-              background: "radial-gradient(ellipse at center, var(--lime) 0%, transparent 55%)",
+              background: "radial-gradient(ellipse at center, var(--primary) 0%, transparent 55%)",
             }}
           />
         </section>
@@ -96,13 +96,13 @@ function ServicePage() {
               <Reveal>
                 <div>
                   <h2 className="heading-sm text-muted-foreground">The problem</h2>
-                  <p className="mt-4 text-lg leading-relaxed">{service.problem}</p>
+                  <p className="mt-4 text-lg leading-relaxed text-foreground">{service.problem}</p>
                 </div>
               </Reveal>
               <Reveal delay={0.1}>
                 <div>
-                  <h2 className="heading-sm text-lime">The solution</h2>
-                  <p className="mt-4 text-lg leading-relaxed">{service.solution}</p>
+                  <h2 className="heading-sm text-primary">The solution</h2>
+                  <p className="mt-4 text-lg leading-relaxed text-foreground">{service.solution}</p>
                 </div>
               </Reveal>
             </div>
@@ -125,10 +125,10 @@ function ServicePage() {
                 {service.useCases.map((useCase, i) => (
                   <li
                     key={i}
-                    className="flex gap-3 rounded-lg border border-border bg-card p-5"
+                    className="flex gap-3 rounded-2xl bg-background p-5 shadow-[6px_6px_12px_rgba(84,104,119,0.12),-6px_-6px_12px_rgba(255,255,255,0.6)] transition-all duration-300 hover:shadow-[8px_8px_16px_rgba(84,104,119,0.15),-8px_-8px_16px_rgba(255,255,255,0.7)] hover:-translate-y-1"
                   >
-                    <span className="data-mono mt-0.5 text-lime">→</span>
-                    <span className="text-base">{useCase}</span>
+                    <span className="data-mono mt-0.5 text-primary">→</span>
+                    <span className="text-base text-foreground">{useCase}</span>
                   </li>
                 ))}
               </ul>
@@ -152,12 +152,12 @@ function ServicePage() {
                 {service.specs.map((spec, i) => (
                   <div
                     key={i}
-                    className="rounded-lg border border-border bg-card p-6"
+                    className="rounded-2xl bg-background p-6 shadow-[6px_6px_12px_rgba(84,104,119,0.12),-6px_-6px_12px_rgba(255,255,255,0.6)] transition-all duration-300 hover:shadow-[8px_8px_16px_rgba(84,104,119,0.15),-8px_-8px_16px_rgba(255,255,255,0.7)] hover:-translate-y-1"
                   >
                     <div className="label-mono text-muted-foreground">
                       {spec.label}
                     </div>
-                    <div className="heading-sm mt-2">{spec.value}</div>
+                    <div className="heading-sm mt-2 text-foreground">{spec.value}</div>
                   </div>
                 ))}
               </div>
@@ -181,10 +181,10 @@ function ServicePage() {
                 {service.process.map((step, i) => (
                   <div
                     key={i}
-                    className="rounded-xl border border-border bg-card p-8"
+                    className="rounded-3xl bg-background p-8 shadow-[8px_8px_16px_rgba(84,104,119,0.15),-8px_-8px_16px_rgba(255,255,255,0.7)] transition-all duration-300 hover:shadow-[12px_12px_24px_rgba(84,104,119,0.2),-12px_-12px_24px_rgba(255,255,255,0.8)] hover:-translate-y-1"
                   >
-                    <div className="label-mono text-lime-dim">{step.step}</div>
-                    <h3 className="heading-md mt-3">{step.title}</h3>
+                    <div className="label-mono text-primary">{step.step}</div>
+                    <h3 className="heading-md mt-3 text-foreground">{step.title}</h3>
                     <p className="mt-4 text-muted-foreground">{step.body}</p>
                   </div>
                 ))}
@@ -211,9 +211,9 @@ function ServicePage() {
                     <AccordionItem
                       key={i}
                       value={`item-${i}`}
-                      className="rounded-lg border border-border bg-card px-6"
+                      className="rounded-2xl bg-background px-6 shadow-[6px_6px_12px_rgba(84,104,119,0.12),-6px_-6px_12px_rgba(255,255,255,0.6)]"
                     >
-                      <AccordionTrigger className="heading-sm text-left hover:no-underline">
+                      <AccordionTrigger className="heading-sm text-left text-foreground hover:no-underline hover:text-primary">
                         {item.q}
                       </AccordionTrigger>
                       <AccordionContent className="pb-6 text-muted-foreground">
@@ -228,18 +228,18 @@ function ServicePage() {
         </section>
 
         {/* CTA */}
-        <section className="grain relative overflow-hidden bg-charcoal py-24 md:py-32">
+        <section className="relative overflow-hidden bg-primary/5 py-24 md:py-32">
           <div className="shell edge relative z-[2]">
             <Reveal>
-              <SectionLabel tone="light">Get started</SectionLabel>
+              <SectionLabel tone="dark">Get started</SectionLabel>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="display-lg mt-7 max-w-3xl text-ivory">
+              <h2 className="display-lg mt-7 max-w-3xl text-foreground">
                 Ready to book {service.name.toLowerCase()}?
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="lede mt-6 max-w-2xl text-ivory/60">
+              <p className="lede mt-6 max-w-2xl text-muted-foreground">
                 Quote back within the hour. Transparent pricing, clear lead times, and a named
                 contact who can track your shipment from collection through to delivery.
               </p>
@@ -259,7 +259,7 @@ function ServicePage() {
             aria-hidden
             className="pointer-events-none absolute -bottom-24 left-1/2 h-[28rem] w-[60rem] -translate-x-1/2 rounded-[50%] opacity-[0.12]"
             style={{
-              background: "radial-gradient(ellipse at center, var(--lime) 0%, transparent 55%)",
+              background: "radial-gradient(ellipse at center, var(--primary) 0%, transparent 55%)",
             }}
           />
         </section>

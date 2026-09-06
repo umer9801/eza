@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { ContactForm } from "@/components/site/ContactForm";
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/contact")({
       {
         title: "Contact Us | Kinetic Logistics",
         description:
-          "Get in touch for quotes, account enquiries or general questions. Call 0161 470 2288, email hello@mftcourier.co.uk or use our contact form. Office hours 07:00–19:00.",
+          "Get in touch for quotes, account enquiries or general questions. Call 0161 470 2288, email hello@mftcourier.co.uk or use our contact form. Office hours 07:00â€“19:00.",
       },
     ],
   }),
@@ -58,7 +58,7 @@ function ContactPage() {
                         <h3 className="heading-sm text-muted-foreground">Phone</h3>
                         <a
                           href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-                          className="mt-2 block text-lg font-medium hover:text-lime"
+                          className="mt-2 block text-lg font-medium hover:text-primary"
                         >
                           {CONTACT.phone}
                         </a>
@@ -71,7 +71,7 @@ function ContactPage() {
                         <h3 className="heading-sm text-muted-foreground">Email</h3>
                         <a
                           href={`mailto:${CONTACT.email}`}
-                          className="mt-2 block text-lg font-medium hover:text-lime"
+                          className="mt-2 block text-lg font-medium hover:text-primary"
                         >
                           {CONTACT.email}
                         </a>
@@ -82,7 +82,7 @@ function ContactPage() {
 
                       <div>
                         <h3 className="heading-sm text-muted-foreground">Office hours</h3>
-                        <p className="mt-2 text-lg font-medium">07:00–19:00</p>
+                        <p className="mt-2 text-lg font-medium">07:00â€“19:00</p>
                         <p className="label-mono mt-1 text-muted-foreground">
                           Monday to Friday
                         </p>
@@ -104,13 +104,13 @@ function ContactPage() {
                     <h2 className="heading-md mb-6">Quick links</h2>
                     <div className="space-y-3">
                       <MagneticButton to="/quote" variant="lime" className="w-full">
-                        Quote Calculator →
+                        Quote Calculator â†’
                       </MagneticButton>
                       <MagneticButton to="/services" variant="ghost" className="w-full">
-                        View Services →
+                        View Services â†’
                       </MagneticButton>
                       <MagneticButton to="/how-it-works" variant="ghost" className="w-full">
-                        How It Works →
+                        How It Works â†’
                       </MagneticButton>
                     </div>
                   </div>
@@ -164,7 +164,7 @@ function ContactPage() {
                   <div className="rounded-xl border border-border bg-card p-8">
                     <h3 className="heading-sm text-muted-foreground">Drop-off hours</h3>
                     <p className="mt-3 text-muted-foreground">
-                      Monday to Friday, 08:00–17:00. Call ahead for out-of-hours drop-off
+                      Monday to Friday, 08:00â€“17:00. Call ahead for out-of-hours drop-off
                       arrangements on urgent movements.
                     </p>
                   </div>
@@ -176,7 +176,7 @@ function ContactPage() {
                   <h3 className="heading-md mb-6">Why this location?</h3>
                   <div className="space-y-4 text-muted-foreground">
                     <p>
-                      Trafford Park sits at the intersection of the M60, M62 and M6 — the three
+                      Trafford Park sits at the intersection of the M60, M62 and M6 â€” the three
                       primary motorway routes serving Greater Manchester, the North West and the rest
                       of the UK.
                     </p>
@@ -190,7 +190,7 @@ function ContactPage() {
                       corridor means consignments move directly onto the national network without
                       backtracking through secondary consolidation points.
                     </p>
-                    <p className="rounded-lg bg-lime/10 p-4 font-medium text-foreground">
+                    <p className="rounded-lg bg-primary/10 p-4 font-medium text-foreground">
                       Central location = faster collection times = lower mileage costs = better
                       service windows for you.
                     </p>
@@ -215,7 +215,7 @@ function ContactPage() {
             <Reveal delay={0.2}>
               <div className="mt-10 grid gap-6 md:grid-cols-3">
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">01</div>
+                  <div className="data-mono text-3xl text-primary">01</div>
                   <h3 className="heading-md mt-4">Same-day phone quotes</h3>
                   <p className="mt-4 text-sm text-muted-foreground">
                     Call {CONTACT.phone} during office hours. We will quote back over the phone and
@@ -224,15 +224,15 @@ function ContactPage() {
                   <div className="mt-6">
                     <a
                       href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-                      className="text-sm font-medium text-lime hover:underline"
+                      className="text-sm font-medium text-primary hover:underline"
                     >
-                      Call now →
+                      Call now â†’
                     </a>
                   </div>
                 </div>
 
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">02</div>
+                  <div className="data-mono text-3xl text-primary">02</div>
                   <h3 className="heading-md mt-4">Email enquiries</h3>
                   <p className="mt-4 text-sm text-muted-foreground">
                     Send your requirements to {CONTACT.email}. We aim to respond within 60 minutes
@@ -241,15 +241,15 @@ function ContactPage() {
                   <div className="mt-6">
                     <a
                       href={`mailto:${CONTACT.email}`}
-                      className="text-sm font-medium text-lime hover:underline"
+                      className="text-sm font-medium text-primary hover:underline"
                     >
-                      Send email →
+                      Send email â†’
                     </a>
                   </div>
                 </div>
 
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">03</div>
+                  <div className="data-mono text-3xl text-primary">03</div>
                   <h3 className="heading-md mt-4">Online quote calculator</h3>
                   <p className="mt-4 text-sm text-muted-foreground">
                     Get instant pricing with our transparent quote engine. Enter postcodes, weight
@@ -257,7 +257,7 @@ function ContactPage() {
                   </p>
                   <div className="mt-6">
                     <MagneticButton to="/quote" variant="lime" size="md">
-                      Get a quote →
+                      Get a quote â†’
                     </MagneticButton>
                   </div>
                 </div>
@@ -267,20 +267,20 @@ function ContactPage() {
         </section>
 
         {/* CTA */}
-        <section className="grain relative overflow-hidden bg-ink py-24 md:py-32">
+        <section className="relative overflow-hidden bg-primary/5 py-24 md:py-32">
           <div className="shell edge relative z-[2]">
             <Reveal>
-              <SectionLabel tone="light" index="04">
+              <SectionLabel tone="dark" index="04">
                 Ready to book?
               </SectionLabel>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="display-lg mt-7 max-w-3xl text-paper">
+              <h2 className="display-lg mt-7 max-w-3xl text-foreground">
                 Let us move your freight.
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="lede mt-6 max-w-2xl text-paper/60">
+              <p className="lede mt-6 max-w-2xl text-muted-foreground">
                 Whether you need a same-day dedicated vehicle in the next hour or a scheduled
                 next-day delivery, we are here to help. Get a quote, ask a question, or book a collection.
               </p>
@@ -288,7 +288,7 @@ function ContactPage() {
             <Reveal delay={0.3}>
               <div className="mt-10 flex flex-wrap gap-4">
                 <MagneticButton to="/quote" size="lg" variant="lime">
-                  Get a Quote →
+                  Get a Quote â†’
                 </MagneticButton>
                 <MagneticButton
                   href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
@@ -304,7 +304,7 @@ function ContactPage() {
             aria-hidden
             className="pointer-events-none absolute -bottom-24 left-1/2 h-[28rem] w-[60rem] -translate-x-1/2 rounded-[50%] opacity-[0.12]"
             style={{
-              background: "radial-gradient(ellipse at center, var(--lime) 0%, transparent 55%)",
+              background: "radial-gradient(ellipse at center, var(--primary) 0%, transparent 55%)",
             }}
           />
         </section>
@@ -313,3 +313,4 @@ function ContactPage() {
     </>
   );
 }
+

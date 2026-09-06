@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Link } from "@tanstack/react-router";
 import { SERVICES } from "@/lib/site-data";
@@ -11,9 +11,9 @@ export function ServiceExplorer() {
   const service = SERVICES[active];
 
   return (
-    <div className="grid gap-px overflow-hidden rounded-sm border border-champagne/12 bg-obsidian/50 lg:grid-cols-[1.05fr_1fr]">
+    <div className="grid gap-px overflow-hidden rounded-sm border border-border bg-[#FAF3E7]/50 lg:grid-cols-[1.05fr_1fr]">
       {/* selector column */}
-      <div className="bg-noir">
+      <div className="bg-background">
         {SERVICES.map((s, i) => {
           const on = i === active;
           return (
@@ -24,8 +24,8 @@ export function ServiceExplorer() {
               onClick={() => setActive(i)}
               aria-pressed={on}
               className={cn(
-                "group relative block w-full border-b border-champagne/10 px-6 py-6 text-left transition-all duration-500 last:border-b-0 md:px-9 md:py-8",
-                on ? "bg-charcoal" : "hover:bg-obsidian",
+                "group relative block w-full border-b border-primary/10 px-6 py-6 text-left transition-all duration-500 last:border-b-0 md:px-9 md:py-8",
+                on ? "bg-[#F5EDE0]" : "hover:bg-[#FAF3E7]",
               )}
               style={{
                 transform: on ? "scale(1.02) translateX(4px)" : "scale(1)",
@@ -35,7 +35,7 @@ export function ServiceExplorer() {
               {on && (
                 <motion.span
                   layoutId="svc-bar"
-                  className="absolute inset-y-0 left-0 w-[3px] bg-lime"
+                  className="absolute inset-y-0 left-0 w-[3px] bg-primary"
                   transition={{ type: "spring", stiffness: 400, damping: 34 }}
                 />
               )}
@@ -43,7 +43,7 @@ export function ServiceExplorer() {
                 <span
                   className={cn(
                     "label-mono transition-colors",
-                    on ? "text-champagne" : "text-warm-gray",
+                    on ? "text-primary" : "text-muted-foreground",
                   )}
                 >
                   {s.index}
@@ -51,7 +51,7 @@ export function ServiceExplorer() {
                 <span
                   className={cn(
                     "text-[1.5rem] font-medium tracking-[-0.035em] transition-colors md:text-[1.9rem]",
-                    on ? "text-ivory" : "text-warm-gray",
+                    on ? "text-foreground" : "text-muted-foreground",
                   )}
                 >
                   {s.name}
@@ -64,7 +64,7 @@ export function ServiceExplorer() {
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden pl-[3.1rem] text-[0.95rem] leading-relaxed text-warm-gray"
+                    className="overflow-hidden pl-[3.1rem] text-[0.95rem] leading-relaxed text-muted-foreground"
                   >
                     <span className="block pt-3">{s.short}</span>
                   </motion.p>
@@ -76,11 +76,11 @@ export function ServiceExplorer() {
       </div>
 
       {/* console column */}
-      <div className="relative flex min-h-[26rem] flex-col justify-between overflow-hidden bg-charcoal p-6 md:p-10">
+      <div className="relative flex min-h-[26rem] flex-col justify-between overflow-hidden bg-[#F5EDE0] p-6 md:p-10">
         <ConsoleRoute seed={active} />
         <div className="relative z-[2] flex items-center justify-between">
-          <span className="label-mono text-warm-gray">Service console</span>
-          <span className="label-mono flex items-center gap-2 text-warm-gray">
+          <span className="label-mono text-muted-foreground">Service console</span>
+          <span className="label-mono flex items-center gap-2 text-muted-foreground">
             <span className="status-dot" aria-hidden /> Live
           </span>
         </div>
@@ -94,14 +94,14 @@ export function ServiceExplorer() {
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className="relative z-[2] mt-10"
           >
-            <p className="max-w-md text-[1.05rem] leading-[1.5] tracking-[-0.015em] text-ivory">
+            <p className="max-w-md text-[1.05rem] leading-[1.5] tracking-[-0.015em] text-foreground">
               {service.blurb}
             </p>
-            <dl className="mt-8 grid grid-cols-3 gap-px overflow-hidden border border-champagne/12 bg-obsidian">
+            <dl className="mt-8 grid grid-cols-3 gap-px overflow-hidden border border-border bg-[#FAF3E7]">
               {service.stats.map((st) => (
-                <div key={st.label} className="bg-obsidian px-3 py-4">
-                  <dt className="label-mono text-[0.55rem] text-warm-gray">{st.label}</dt>
-                  <dd className="data-mono mt-2 text-[1.05rem] text-champagne">{st.value}</dd>
+                <div key={st.label} className="bg-[#FAF3E7] px-3 py-4">
+                  <dt className="label-mono text-[0.55rem] text-muted-foreground">{st.label}</dt>
+                  <dd className="data-mono mt-2 text-[1.05rem] text-primary">{st.value}</dd>
                 </div>
               ))}
             </dl>
@@ -109,13 +109,13 @@ export function ServiceExplorer() {
               <Link
                 to="/services/$slug"
                 params={{ slug: service.slug }}
-                className="group label-mono flex items-center gap-2 text-ivory transition-colors hover:text-champagne"
+                className="group label-mono flex items-center gap-2 text-foreground transition-colors hover:text-primary"
               >
                 Service detail <ArrowGlyph />
               </Link>
               <Link
                 to="/quote"
-                className="group label-mono flex items-center gap-2 text-warm-gray transition-colors hover:text-champagne"
+                className="group label-mono flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
               >
                 Quote this service <ArrowGlyph />
               </Link>
@@ -144,9 +144,9 @@ function ConsoleRoute({ seed }: { seed: number }) {
     >
       <defs>
         <linearGradient id="svc-grad" x1="0" x2="1">
-          <stop offset="0%" stopColor="#C8FF3D" stopOpacity="0" />
-          <stop offset="45%" stopColor="#C8FF3D" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="#9DB6FF" stopOpacity="0.2" />
+          <stop offset="0%" stopColor="#FF771C" stopOpacity="0" />
+          <stop offset="45%" stopColor="#FF771C" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#546877" stopOpacity="0.4" />
         </linearGradient>
       </defs>
       <AnimatePresence mode="wait">
@@ -165,11 +165,12 @@ function ConsoleRoute({ seed }: { seed: number }) {
       <path
         d={paths[seed % paths.length]}
         fill="none"
-        stroke="#C8FF3D"
-        strokeOpacity="0.25"
+        stroke="#546877"
+        strokeOpacity="0.2"
         strokeWidth="1"
         className="route-flow"
       />
     </svg>
   );
 }
+

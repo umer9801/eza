@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { MagneticButton, SectionLabel, Reveal, Hairline } from "@/components/site/primitives";
@@ -265,7 +265,7 @@ function QuotePage() {
                 <div className="rounded-2xl border border-border bg-card p-8 lg:sticky lg:top-24">
                   {!quote ? (
                     <div className="flex min-h-[24rem] flex-col items-center justify-center text-center">
-                      <div className="data-mono text-6xl text-lime">→</div>
+                      <div className="data-mono text-6xl text-primary">â†’</div>
                       <p className="label-mono mt-6 text-muted-foreground">
                         Fill in the details and calculate to see your quote
                       </p>
@@ -276,7 +276,7 @@ function QuotePage() {
                         <h2 className="heading-md">Your quote</h2>
                         <p className="label-mono mt-2 text-muted-foreground">
                           ETA: {quote.eta}
-                          {quote.distance && ` · ${quote.distance} miles`}
+                          {quote.distance && ` Â· ${quote.distance} miles`}
                         </p>
                       </div>
 
@@ -327,7 +327,7 @@ function QuotePage() {
 
                       <div className="flex items-baseline justify-between">
                         <span className="heading-sm">Total</span>
-                        <span className="data-mono text-3xl text-lime">
+                        <span className="data-mono text-3xl text-primary">
                           {gbp(quote.total)}
                         </span>
                       </div>
@@ -339,13 +339,13 @@ function QuotePage() {
                         <div className="space-y-2">
                           <a
                             href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-                            className="block text-sm font-medium hover:text-lime"
+                            className="block text-sm font-medium hover:text-primary"
                           >
                             Call: {CONTACT.phone}
                           </a>
                           <a
                             href={`mailto:${CONTACT.email}?subject=Quote request: ${from} to ${to}`}
-                            className="block text-sm font-medium hover:text-lime"
+                            className="block text-sm font-medium hover:text-primary"
                           >
                             Email: {CONTACT.email}
                           </a>
@@ -382,3 +382,4 @@ function QuoteLine({
     </div>
   );
 }
+

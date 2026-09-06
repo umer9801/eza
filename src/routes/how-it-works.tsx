@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { MagneticButton, ArrowGlyph, SectionLabel, Reveal, Hairline } from "@/components/site/primitives";
@@ -76,7 +76,7 @@ const FEATURES = [
   {
     title: "Account Setup",
     description:
-      "Open an account with agreed rates, payment terms and standing collection slots. One-off and casual customers welcome — no minimum volume required.",
+      "Open an account with agreed rates, payment terms and standing collection slots. One-off and casual customers welcome â€” no minimum volume required.",
   },
   {
     title: "Collection Options",
@@ -91,7 +91,7 @@ const FEATURES = [
   {
     title: "Insurance & Liability",
     description:
-      "Standard liability cover included. Extended insurance available for high-value shipments — confirm requirements at the quote stage.",
+      "Standard liability cover included. Extended insurance available for high-value shipments â€” confirm requirements at the quote stage.",
   },
   {
     title: "Invoicing & Payment",
@@ -152,7 +152,7 @@ function HowItWorksPage() {
                 <Reveal key={item.step} delay={i * 0.1}>
                   <div className="grid gap-10 lg:grid-cols-[1fr,1.5fr] lg:gap-16">
                     <div>
-                      <div className="label-mono text-lime-dim">{item.step}</div>
+                      <div className="label-mono text-primary-dim">{item.step}</div>
                       <h2 className="display-md mt-3">{item.title}</h2>
                       <p className="heading-sm mt-2 text-muted-foreground">
                         {item.subtitle}
@@ -163,7 +163,7 @@ function HowItWorksPage() {
                       <ul className="mt-8 space-y-3">
                         {item.details.map((detail, j) => (
                           <li key={j} className="flex gap-3">
-                            <span className="data-mono mt-1 text-lime">→</span>
+                            <span className="data-mono mt-1 text-primary">â†’</span>
                             <span className="text-muted-foreground">{detail}</span>
                           </li>
                         ))}
@@ -192,7 +192,7 @@ function HowItWorksPage() {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="lede mt-6 max-w-2xl text-muted-foreground">
-                Accounts, payment terms, packaging, insurance and returns — the operational details
+                Accounts, payment terms, packaging, insurance and returns â€” the operational details
                 that matter when you are moving freight regularly.
               </p>
             </Reveal>
@@ -228,7 +228,7 @@ function HowItWorksPage() {
             <Reveal delay={0.2}>
               <div className="mt-10 grid gap-6 lg:grid-cols-3">
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">01</div>
+                  <div className="data-mono text-3xl text-primary">01</div>
                   <h3 className="heading-md mt-4">Online Quote</h3>
                   <p className="mt-4 text-muted-foreground">
                     Use the quote calculator to get instant pricing with a transparent breakdown.
@@ -242,7 +242,7 @@ function HowItWorksPage() {
                 </div>
 
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">02</div>
+                  <div className="data-mono text-3xl text-primary">02</div>
                   <h3 className="heading-md mt-4">Phone</h3>
                   <p className="mt-4 text-muted-foreground">
                     Call the office during working hours. Quote provided over the phone, confirmed
@@ -251,18 +251,18 @@ function HowItWorksPage() {
                   <div className="mt-6 space-y-2">
                     <a
                       href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-                      className="block font-medium hover:text-lime"
+                      className="block font-medium hover:text-primary"
                     >
                       {CONTACT.phone}
                     </a>
                     <p className="label-mono text-muted-foreground">
-                      Office 07:00–19:00
+                      Office 07:00â€“19:00
                     </p>
                   </div>
                 </div>
 
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">03</div>
+                  <div className="data-mono text-3xl text-primary">03</div>
                   <h3 className="heading-md mt-4">Email</h3>
                   <p className="mt-4 text-muted-foreground">
                     Email your requirements and we will quote back within the hour during office
@@ -271,7 +271,7 @@ function HowItWorksPage() {
                   <div className="mt-6">
                     <a
                       href={`mailto:${CONTACT.email}`}
-                      className="block font-medium hover:text-lime"
+                      className="block font-medium hover:text-primary"
                     >
                       {CONTACT.email}
                     </a>
@@ -286,20 +286,20 @@ function HowItWorksPage() {
         </section>
 
         {/* CTA */}
-        <section className="grain relative overflow-hidden bg-ink py-24 md:py-32">
+        <section className="relative overflow-hidden bg-primary/5 py-24 md:py-32">
           <div className="shell edge relative z-[2]">
             <Reveal>
-              <SectionLabel tone="light" index="04">
+              <SectionLabel tone="dark" index="04">
                 Get started
               </SectionLabel>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="display-lg mt-7 max-w-3xl text-paper">
+              <h2 className="display-lg mt-7 max-w-3xl text-foreground">
                 Ready to book your first shipment?
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="lede mt-6 max-w-2xl text-paper/60">
+              <p className="lede mt-6 max-w-2xl text-muted-foreground">
                 Get an instant quote online, or call the office to talk through your requirements.
                 Quote confirmed in writing before we collect, with transparent pricing and clear lead times.
               </p>
@@ -319,7 +319,7 @@ function HowItWorksPage() {
             aria-hidden
             className="pointer-events-none absolute -bottom-24 left-1/2 h-[28rem] w-[60rem] -translate-x-1/2 rounded-[50%] opacity-[0.12]"
             style={{
-              background: "radial-gradient(ellipse at center, var(--lime) 0%, transparent 55%)",
+              background: "radial-gradient(ellipse at center, var(--primary) 0%, transparent 55%)",
             }}
           />
         </section>
@@ -328,3 +328,4 @@ function HowItWorksPage() {
     </>
   );
 }
+

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
@@ -49,7 +49,7 @@ function Index() {
       <Navbar />
       <main>
         {/* Hero - Minimal Animation */}
-        <section className="relative min-h-screen overflow-hidden bg-paper pt-[5.5rem]">
+        <section className="relative min-h-screen overflow-hidden bg-background pt-[5.5rem]">
           <MinimalHeroAnimation />
           <GlobeAnimation />
 
@@ -60,12 +60,12 @@ function Index() {
             <SplitHeading
               delay={0.15}
               text="Moving business forward."
-              className="display-xl mt-8 max-w-5xl text-ink"
+              className="display-xl mt-8 max-w-5xl text-foreground"
             />
             <Reveal delay={0.55} y={18}>
-              <p className="lede mt-8 max-w-2xl text-ink/70 hidden md:block">
+              <p className="lede mt-8 max-w-2xl text-foreground/70 hidden md:block">
                 Same-day courier, next-day delivery, freight, fulfilment and international shipping
-                — from a Littleborough hub built around real operational pressure, not industry averages.
+                â€” from a Littleborough hub built around real operational pressure, not industry averages.
               </p>
             </Reveal>
             <Reveal delay={0.75} y={16}>
@@ -82,24 +82,24 @@ function Index() {
               <div className="mt-16 flex flex-wrap gap-x-8 gap-y-2">
                 <a
                   href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-                  className="label-mono flex items-center gap-2 text-ink/55 transition-all duration-300 hover:text-lime hover:scale-105"
+                  className="label-mono flex items-center gap-2 text-foreground/55 transition-all duration-300 hover:text-primary hover:scale-105"
                 >
                   <span className="status-dot animate-pulse" aria-hidden />
                   {CONTACT.phone}
                 </a>
-                <span className="label-mono text-ink/40">Office 07:00–19:00 · Dispatch 24/7</span>
+                <span className="label-mono text-foreground/40">Office 07:00â€“19:00 Â· Dispatch 24/7</span>
               </div>
             </Reveal>
           </div>
         </section>
 
-        <RouteTicker tone="light" />
+        <RouteTicker tone="dark" />
 
         {/* About/Warehouse Section with Image */}
         <section className="shell edge relative overflow-hidden py-20 md:py-32">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
             <Reveal delay={0.1}>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-[12px_12px_24px_rgba(84,104,119,0.2),-12px_-12px_24px_rgba(255,255,255,0.8)]">
                 <motion.img
                   src="/images/warehouse.jpg"
                   alt="EZA Logistics Warehouse"
@@ -109,15 +109,15 @@ function Index() {
                   viewport={{ once: true }}
                   transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-noir/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
                 <motion.div
-                  className="absolute bottom-6 left-6 rounded-lg bg-champagne/90 backdrop-blur-sm px-4 py-2"
+                  className="absolute bottom-6 left-6 rounded-2xl bg-primary backdrop-blur-sm px-4 py-2 shadow-[6px_6px_12px_rgba(84,104,119,0.3)]"
                   initial={{ y: 20, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5, duration: 0.6 }}
                 >
-                  <p className="text-sm font-bold text-noir">24/7 Operations</p>
+                  <p className="text-sm font-bold text-white">24/7 Operations</p>
                 </motion.div>
               </div>
             </Reveal>
@@ -125,22 +125,22 @@ function Index() {
             <Reveal delay={0.2}>
               <div>
                 <SectionLabel index="02">About EZA Logistics</SectionLabel>
-                <h2 className="display-md mt-6 text-ivory">
-                  Built for speed. <span className="text-champagne">Designed for reliability.</span>
+                <h2 className="display-md mt-6 text-foreground">
+                  Built for speed. <span className="text-primary">Designed for reliability.</span>
                 </h2>
-                <p className="lede mt-6 text-warm-gray">
+                <p className="lede mt-6 text-muted-foreground">
                   From our Littleborough hub, we operate a 24/7 logistics network covering the entire UK. 
                   Every shipment is tracked in real-time, every deadline is a commitment, and every delivery 
                   is backed by our experienced team.
                 </p>
                 <div className="mt-8 grid grid-cols-2 gap-6">
-                  <div className="rounded-lg border border-champagne/20 bg-charcoal/50 p-6">
-                    <p className="text-3xl font-bold text-champagne">15+</p>
-                    <p className="mt-2 text-sm text-warm-gray">Years Operating</p>
+                  <div className="rounded-2xl bg-background p-6 shadow-[8px_8px_16px_rgba(84,104,119,0.15),-8px_-8px_16px_rgba(255,255,255,0.7)] transition-all duration-300 hover:shadow-[12px_12px_24px_rgba(84,104,119,0.2),-12px_-12px_24px_rgba(255,255,255,0.8)] hover:-translate-y-1">
+                    <p className="text-3xl font-bold text-primary">15+</p>
+                    <p className="mt-2 text-sm text-muted-foreground">Years Operating</p>
                   </div>
-                  <div className="rounded-lg border border-champagne/20 bg-charcoal/50 p-6">
-                    <p className="text-3xl font-bold text-champagne">98.7%</p>
-                    <p className="mt-2 text-sm text-warm-gray">On-Time Delivery</p>
+                  <div className="rounded-2xl bg-background p-6 shadow-[8px_8px_16px_rgba(84,104,119,0.15),-8px_-8px_16px_rgba(255,255,255,0.7)] transition-all duration-300 hover:shadow-[12px_12px_24px_rgba(84,104,119,0.2),-12px_-12px_24px_rgba(255,255,255,0.8)] hover:-translate-y-1">
+                    <p className="text-3xl font-bold text-primary">98.7%</p>
+                    <p className="mt-2 text-sm text-muted-foreground">On-Time Delivery</p>
                   </div>
                 </div>
                 <div className="mt-8">
@@ -154,15 +154,15 @@ function Index() {
         </section>
 
         {/* Driver/Team Section with Image */}
-        <section className="shell edge relative overflow-hidden py-20 md:py-32 bg-obsidian/30">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
+        <section className="shell edge relative overflow-hidden py-20 md:py-32 bg-cream-light rounded-3xl">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-center px-8">
             <Reveal delay={0.1}>
               <div>
                 <SectionLabel index="03">Our Team</SectionLabel>
-                <h2 className="display-md mt-6 text-ivory">
-                  Professional drivers. <span className="text-champagne">Personal service.</span>
+                <h2 className="display-md mt-6 text-foreground">
+                  Professional drivers. <span className="text-primary">Personal service.</span>
                 </h2>
-                <p className="lede mt-6 text-warm-gray">
+                <p className="lede mt-6 text-muted-foreground">
                   Every member of our team is fully trained, background-checked, and committed to delivering 
                   your shipments with care. From collection to final delivery, you'll have a dedicated contact 
                   who knows your business and understands your requirements.
@@ -176,13 +176,13 @@ function Index() {
                   ].map((item, i) => (
                     <motion.li
                       key={i}
-                      className="flex items-center gap-3 text-warm-gray"
+                      className="flex items-center gap-3 text-muted-foreground"
                       initial={{ x: -20, opacity: 0 }}
                       whileInView={{ x: 0, opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.1 * i, duration: 0.5 }}
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-champagne" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                       {item}
                     </motion.li>
                   ))}
@@ -191,7 +191,7 @@ function Index() {
             </Reveal>
 
             <Reveal delay={0.2}>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-[12px_12px_24px_rgba(84,104,119,0.2),-12px_-12px_24px_rgba(255,255,255,0.8)]">
                 <motion.img
                   src="/images/driver.jpg"
                   alt="Professional EZA Logistics Driver"
@@ -201,7 +201,7 @@ function Index() {
                   viewport={{ once: true }}
                   transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-noir/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
               </div>
             </Reveal>
           </div>
@@ -223,7 +223,7 @@ function Index() {
             <Reveal delay={0.2}>
               <p className="lede mt-6 max-w-2xl text-muted-foreground">
                 Same-day direct, next-day trunking, palletised freight, e-commerce fulfilment and
-                international coordination — each structured around the real constraints of your operation.
+                international coordination â€” each structured around the real constraints of your operation.
               </p>
             </Reveal>
             <Reveal delay={0.35}>
@@ -236,7 +236,7 @@ function Index() {
           </div>
         </section>
 
-        <RouteTicker tone="light" />
+        <RouteTicker tone="dark" />
 
         {/* Coverage */}
         <section className="surface-light py-24 md:py-32">
@@ -287,7 +287,7 @@ function Index() {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="lede mt-6 max-w-2xl text-muted-foreground">
-                Retail, manufacturing, healthcare, automotive, legal and hospitality — each with
+                Retail, manufacturing, healthcare, automotive, legal and hospitality â€” each with
                 operational patterns we have learned by moving actual freight under real pressure.
               </p>
             </Reveal>
@@ -300,20 +300,20 @@ function Index() {
         </section>
 
         {/* CTA */}
-        <section className="grain relative overflow-hidden bg-ink py-24 md:py-32">
+        <section className="relative overflow-hidden bg-primary/5 py-24 md:py-32">
           <div className="shell edge relative z-[2]">
             <Reveal>
-              <SectionLabel tone="light" index="05">
+              <SectionLabel tone="dark" index="05">
                 Get started
               </SectionLabel>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="display-lg mt-7 max-w-3xl text-paper">
+              <h2 className="display-lg mt-7 max-w-3xl text-foreground">
                 One quote, clear pricing, transparent lead times.
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="lede mt-6 max-w-2xl text-paper/60">
+              <p className="lede mt-6 max-w-2xl text-muted-foreground">
                 Tell us the postcodes, the weight and the deadline. We will quote it back within
                 the hour, explain what moves when, and confirm it in writing before collection.
               </p>
@@ -331,10 +331,9 @@ function Index() {
           </div>
           <div
             aria-hidden
-            className="pointer-events-none absolute -bottom-24 left-1/2 h-[28rem] w-[60rem] -translate-x-1/2 animate-pulse rounded-[50%] opacity-[0.18]"
+            className="pointer-events-none absolute -bottom-24 left-1/2 h-[28rem] w-[60rem] -translate-x-1/2 rounded-[50%] opacity-[0.18]"
             style={{
-              background: "radial-gradient(ellipse at center, var(--lime) 0%, transparent 55%)",
-              animation: "pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              background: "radial-gradient(ellipse at center, var(--primary) 0%, transparent 55%)",
             }}
           />
         </section>
@@ -343,3 +342,4 @@ function Index() {
     </>
   );
 }
+

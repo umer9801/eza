@@ -62,12 +62,12 @@ export function SectionLabel({
     <div
       className={cn(
         "label-mono flex items-center gap-3",
-        tone === "dark" ? "text-muted-foreground" : "text-ivory/55",
+        tone === "dark" ? "text-muted-foreground" : "text-foreground/70",
         className,
       )}
     >
       <span className="status-dot" aria-hidden />
-      {index ? <span className="text-lime-dim">{index}</span> : null}
+      {index ? <span className="text-primary">{index}</span> : null}
       <span>{children}</span>
     </div>
   );
@@ -89,11 +89,10 @@ type MagneticProps = {
 };
 
 const variants: Record<string, string> = {
-  lime: "bg-champagne text-noir hover:bg-champagne-light",
-  ink: "bg-ivory text-noir hover:bg-ivory/90",
-  paper: "bg-noir text-ivory hover:bg-obsidian",
-  ghost:
-    "bg-transparent text-current border border-current/25 hover:border-current/60",
+  lime: "bg-primary text-white shadow-[6px_6px_12px_rgba(84,104,119,0.2),-6px_-6px_12px_rgba(255,255,255,0.8)] hover:shadow-[inset_4px_4px_8px_rgba(84,104,119,0.15),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] active:shadow-[inset_6px_6px_12px_rgba(84,104,119,0.2),inset_-6px_-6px_12px_rgba(255,255,255,0.5)]",
+  ink: "bg-foreground text-background shadow-[6px_6px_12px_rgba(84,104,119,0.2),-6px_-6px_12px_rgba(255,255,255,0.8)] hover:shadow-[inset_4px_4px_8px_rgba(84,104,119,0.15),inset_-4px_-4px_8px_rgba(255,255,255,0.7)]",
+  paper: "bg-background text-foreground shadow-[6px_6px_12px_rgba(84,104,119,0.2),-6px_-6px_12px_rgba(255,255,255,0.8)] hover:shadow-[inset_4px_4px_8px_rgba(84,104,119,0.15),inset_-4px_-4px_8px_rgba(255,255,255,0.7)]",
+  ghost: "bg-transparent text-current border-2 border-current/30 shadow-[4px_4px_8px_rgba(84,104,119,0.1),-4px_-4px_8px_rgba(255,255,255,0.5)] hover:border-current/60 hover:shadow-[6px_6px_12px_rgba(84,104,119,0.15),-6px_-6px_12px_rgba(255,255,255,0.7)]",
 };
 
 export function MagneticButton({
@@ -274,8 +273,8 @@ export function Stat({
   className?: string;
 }) {
   return (
-    <div className={cn("border-t border-border pt-3", className)}>
-      <div className="data-mono text-2xl tracking-tight">{value}</div>
+    <div className={cn("rounded-2xl bg-background p-5 shadow-[8px_8px_16px_rgba(84,104,119,0.15),-8px_-8px_16px_rgba(255,255,255,0.7)] transition-all duration-300 hover:shadow-[12px_12px_24px_rgba(84,104,119,0.2),-12px_-12px_24px_rgba(255,255,255,0.8)] hover:-translate-y-1", className)}>
+      <div className="data-mono text-2xl tracking-tight text-foreground">{value}</div>
       <div className="label-mono mt-1.5 text-muted-foreground">{label}</div>
     </div>
   );

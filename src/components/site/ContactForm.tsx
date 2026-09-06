@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -75,8 +75,8 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-lime/20 bg-lime/5 p-8 text-center md:p-12">
-        <div className="data-mono mx-auto text-6xl text-lime">✓</div>
+      <div className="rounded-2xl border border-primary/20 bg-primary/5 p-8 text-center md:p-12">
+        <div className="data-mono mx-auto text-6xl text-primary">âœ“</div>
         <h3 className="heading-lg mt-6">Message received</h3>
         <p className="mt-4 text-muted-foreground">
           Thank you for getting in touch. We will respond within one working day during office hours.
@@ -180,7 +180,7 @@ export function ContactForm() {
           rows={6}
           value={formData.message}
           onChange={(e) => handleChange("message", e.target.value)}
-          placeholder="Tell us about your requirements — postcodes, weight, service level and any specific constraints..."
+          placeholder="Tell us about your requirements â€” postcodes, weight, service level and any specific constraints..."
         />
         <p className="label-mono text-muted-foreground">
           For urgent same-day requirements, please call {CONTACT.phone}
@@ -225,3 +225,4 @@ export function ContactForm() {
     </form>
   );
 }
+

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { MagneticButton, ArrowGlyph, SectionLabel, Reveal, AnimatedCounter } from "@/components/site/primitives";
@@ -25,32 +25,32 @@ const PRICING_FACTORS = [
   {
     title: "Base Charge",
     description:
-      "Starting price determined by shipment size — from small parcels through to full freight loads. Covers vehicle allocation and the first stage of the movement.",
-    example: "Small parcel: £18 · Pallet: £72 · Freight: £145",
+      "Starting price determined by shipment size â€” from small parcels through to full freight loads. Covers vehicle allocation and the first stage of the movement.",
+    example: "Small parcel: Â£18 Â· Pallet: Â£72 Â· Freight: Â£145",
   },
   {
     title: "Mileage",
     description:
       "Distance-based charge calculated from real UK postcode areas. Per-mile rate scales with shipment size and vehicle type required.",
-    example: "Medium parcel: £1.05/mile · Freight: £2.60/mile",
+    example: "Medium parcel: Â£1.05/mile Â· Freight: Â£2.60/mile",
   },
   {
     title: "Service Speed",
     description:
       "Multiplier based on urgency. Same-day dedicated commands a premium; scheduled services offer a discount against the standard next-day rate.",
-    example: "Same-day: 1.85× · Next-day: 1× · Scheduled: 0.86×",
+    example: "Same-day: 1.85Ã— Â· Next-day: 1Ã— Â· Scheduled: 0.86Ã—",
   },
   {
     title: "Weight Surcharge",
     description:
       "Applied when shipment weight exceeds the standard maximum for its size category. Charged per kilogram over the threshold.",
-    example: "£0.65/kg over category limit",
+    example: "Â£0.65/kg over category limit",
   },
   {
     title: "Handling Fees",
     description:
-      "Fixed charges for specialist equipment or requirements — tail-lift, temperature control, two-person handling or fragile goods protocols.",
-    example: "Tail-lift: £25 · Temperature: £32 · Two-person: £45",
+      "Fixed charges for specialist equipment or requirements â€” tail-lift, temperature control, two-person handling or fragile goods protocols.",
+    example: "Tail-lift: Â£25 Â· Temperature: Â£32 Â· Two-person: Â£45",
   },
   {
     title: "Fuel Surcharge",
@@ -67,7 +67,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Are there any hidden fees?",
-    a: "No. The quote calculator shows every component — base, mileage, speed uplift, handling, fuel and VAT. What you see is what you pay, confirmed in writing before collection.",
+    a: "No. The quote calculator shows every component â€” base, mileage, speed uplift, handling, fuel and VAT. What you see is what you pay, confirmed in writing before collection.",
   },
   {
     q: "What is the minimum charge?",
@@ -91,7 +91,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Do you price-match competitors?",
-    a: "We price transparently based on real costs and service commitments. If you have received a significantly lower quote elsewhere, call us to discuss — there may be differences in service level, coverage or terms.",
+    a: "We price transparently based on real costs and service commitments. If you have received a significantly lower quote elsewhere, call us to discuss â€” there may be differences in service level, coverage or terms.",
   },
 ];
 
@@ -208,8 +208,8 @@ function PricingPage() {
                           onClick={() => setSelectedSize(size.id as SizeId)}
                           className={`rounded-lg border-2 p-4 text-left transition-all ${
                             selectedSize === size.id
-                              ? "border-lime bg-lime/10"
-                              : "border-border bg-card hover:border-lime/40"
+                              ? "border-primary bg-primary/10"
+                              : "border-border bg-card hover:border-primary/40"
                           }`}
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
@@ -242,8 +242,8 @@ function PricingPage() {
                           onClick={() => setSelectedSpeed(speed.id as SpeedId)}
                           className={`rounded-lg border-2 p-4 text-left transition-all ${
                             selectedSpeed === speed.id
-                              ? "border-lime bg-lime/10"
-                              : "border-border bg-card hover:border-lime/40"
+                              ? "border-primary bg-primary/10"
+                              : "border-border bg-card hover:border-primary/40"
                           }`}
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
@@ -272,8 +272,8 @@ function PricingPage() {
                       <h3 className="heading-sm">Distance from Manchester</h3>
                       <motion.span 
                         key={distance}
-                        initial={{ scale: 1.3, color: "var(--lime)" }}
-                        animate={{ scale: 1, color: "var(--lime)" }}
+                        initial={{ scale: 1.3, color: "var(--primary)" }}
+                        animate={{ scale: 1, color: "var(--primary)" }}
                         transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
                         className="data-mono text-xl"
                       >
@@ -305,8 +305,8 @@ function PricingPage() {
                       <h3 className="heading-sm">Weight</h3>
                       <motion.span 
                         key={weight}
-                        initial={{ scale: 1.3, color: "var(--lime)" }}
-                        animate={{ scale: 1, color: "var(--lime)" }}
+                        initial={{ scale: 1.3, color: "var(--primary)" }}
+                        animate={{ scale: 1, color: "var(--primary)" }}
                         transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
                         className="data-mono text-xl"
                       >
@@ -333,7 +333,7 @@ function PricingPage() {
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
                 >
                   <motion.div 
-                    className="rounded-2xl border-2 border-lime/20 bg-gradient-to-br from-lime/5 to-lime/10 p-8"
+                    className="rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-lime/5 to-lime/10 p-8"
                     animate={animatePrice ? { scale: [1, 1.02, 1] } : {}}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
@@ -347,9 +347,9 @@ function PricingPage() {
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -20, opacity: 0 }}
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        className="data-mono mt-4 text-center text-6xl text-lime"
+                        className="data-mono mt-4 text-center text-6xl text-primary"
                       >
-                        <AnimatedCounter value={estimatedPrice} prefix="£" />
+                        <AnimatedCounter value={estimatedPrice} prefix="Â£" />
                       </motion.div>
                     </AnimatePresence>
                     <motion.p 
@@ -367,7 +367,7 @@ function PricingPage() {
 
                     {/* Breakdown Preview */}
                     <motion.div 
-                      className="mt-6 space-y-2 rounded-lg border border-lime/20 bg-lime/5 p-4"
+                      className="mt-6 space-y-2 rounded-lg border border-primary/20 bg-primary/5 p-4"
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       transition={{ delay: 0.2 }}
@@ -429,7 +429,7 @@ function PricingPage() {
             <Reveal delay={0.2}>
               <p className="lede mt-6 max-w-2xl text-muted-foreground">
                 Our pricing engine calculates costs based on real operational factors. No guesswork,
-                no averages — just transparent charges you can verify before you commit.
+                no averages â€” just transparent charges you can verify before you commit.
               </p>
             </Reveal>
             <Reveal delay={0.3}>
@@ -446,7 +446,7 @@ function PricingPage() {
                           {factor.description}
                         </p>
                       </div>
-                      <div className="label-mono text-nowrap rounded-full bg-lime/10 px-4 py-1.5 text-lime-dim">
+                      <div className="label-mono text-nowrap rounded-full bg-primary/10 px-4 py-1.5 text-primary-dim">
                         {i + 1}
                       </div>
                     </div>
@@ -542,8 +542,8 @@ function PricingPage() {
                           {speed.detail}
                         </p>
                       </div>
-                      <div className="data-mono text-2xl text-lime">
-                        {speed.multiplier}×
+                      <div className="data-mono text-2xl text-primary">
+                        {speed.multiplier}Ã—
                       </div>
                     </div>
                     <div className="mt-6 rounded-lg bg-muted/30 p-4">
@@ -583,7 +583,7 @@ function PricingPage() {
                     className="flex items-center justify-between rounded-lg border border-border bg-card p-6"
                   >
                     <span className="text-base font-medium">{item.name}</span>
-                    <span className="heading-sm text-lime">{gbp(item.fee)}</span>
+                    <span className="heading-sm text-primary">{gbp(item.fee)}</span>
                   </div>
                 ))}
               </div>
@@ -626,20 +626,20 @@ function PricingPage() {
         </section>
 
         {/* CTA */}
-        <section className="grain relative overflow-hidden bg-ink py-24 md:py-32">
+        <section className="relative overflow-hidden bg-primary/5 py-24 md:py-32">
           <div className="shell edge relative z-[2]">
             <Reveal>
-              <SectionLabel tone="light" index="08">
+              <SectionLabel tone="dark" index="08">
                 Get a quote
               </SectionLabel>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="display-lg mt-7 max-w-3xl text-paper">
+              <h2 className="display-lg mt-7 max-w-3xl text-foreground">
                 See exactly what you will pay.
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="lede mt-6 max-w-2xl text-paper/60">
+              <p className="lede mt-6 max-w-2xl text-muted-foreground">
                 Use the online calculator to get an instant breakdown of charges, or call the office
                 for a quote over the phone. Every component explained, every cost confirmed in writing.
               </p>
@@ -659,7 +659,7 @@ function PricingPage() {
             aria-hidden
             className="pointer-events-none absolute -bottom-24 left-1/2 h-[28rem] w-[60rem] -translate-x-1/2 rounded-[50%] opacity-[0.12]"
             style={{
-              background: "radial-gradient(ellipse at center, var(--lime) 0%, transparent 55%)",
+              background: "radial-gradient(ellipse at center, var(--primary) 0%, transparent 55%)",
             }}
           />
         </section>
@@ -668,3 +668,4 @@ function PricingPage() {
     </>
   );
 }
+

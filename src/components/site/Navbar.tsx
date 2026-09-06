@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { CONTACT } from "@/lib/site-data";
 import { MagneticButton, ArrowGlyph } from "./primitives";
-import { ThemeToggle } from "./ThemeToggle";
 
 const NAV = [
   { to: "/services", label: "Services" },
@@ -36,23 +35,31 @@ export function Navbar() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)]",
           scrolled
-            ? "border-b border-ink/10 bg-paper/80 backdrop-blur-xl"
-            : "border-b border-transparent",
+            ? "py-3 px-4"
+            : "py-4 px-4",
         )}
       >
         <div
           className={cn(
-            "shell edge flex items-center justify-between transition-all duration-500",
-            scrolled ? "h-16" : "h-[5.5rem]",
+            "max-w-7xl mx-auto rounded-2xl transition-all duration-500 px-4 md:px-6",
+            scrolled
+              ? "bg-background/95 backdrop-blur-xl shadow-[8px_8px_16px_rgba(84,104,119,0.15),-8px_-8px_16px_rgba(255,255,255,0.7)]"
+              : "bg-transparent",
           )}
         >
-          <Link to="/" className="flex items-baseline gap-2.5" aria-label="EZA Logistics home">
-            <span className="text-[1.6rem] font-semibold leading-none tracking-[-0.06em]">
-              EZA
-            </span>
-            <span className="label-mono hidden text-[0.58rem] text-muted-foreground md:block">
-              Logistics
-            </span>
+          <div className="flex items-center justify-between h-14 md:h-16">
+          <Link to="/" className="flex items-center gap-2" aria-label="EZA Logistics home">
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary shadow-[4px_4px_8px_rgba(84,104,119,0.15),-4px_-4px_8px_rgba(255,255,255,0.7)]">
+              <span className="text-lg font-bold leading-none text-white">E</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-base font-bold leading-none tracking-tight text-foreground">
+                EZA
+              </span>
+              <span className="text-[0.6rem] leading-none text-muted-foreground hidden sm:block">
+                Logistics
+              </span>
+            </div>
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
@@ -63,32 +70,30 @@ export function Navbar() {
                 <Link
                   key={item.to}
                   to={item.to}
-                  className="relative px-3.5 py-2 text-[0.83rem] font-medium tracking-[-0.01em] text-ink/70 transition-colors hover:text-ink"
+                  className="relative px-3.5 py-2 text-[0.83rem] font-medium tracking-[-0.01em] text-foreground/70 transition-colors hover:text-foreground"
                 >
                   {active && (
                     <motion.span
                       layoutId="nav-active"
-                      className="absolute inset-x-2.5 -bottom-0.5 h-px bg-lime-dim"
+                      className="absolute inset-0 rounded-xl bg-background shadow-[inset_4px_4px_8px_rgba(84,104,119,0.15),inset_-4px_-4px_8px_rgba(255,255,255,0.7)]"
                       transition={{ type: "spring", stiffness: 380, damping: 32 }}
                     />
                   )}
-                  <span className={cn(active && "text-ink")}>{item.label}</span>
-                </Link>
+                  <span className={cn("relative z-10", active && "text-primary font-semibold")}>{item.label}</span>                </Link>
               );
             })}
           </nav>
 
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            <div className="hidden items-center gap-2 xl:flex">
+          <div className="flex items-center gap-2 md:gap-3">
+            <div className="hidden items-center gap-2 rounded-full bg-background px-3 py-1.5 shadow-[4px_4px_8px_rgba(84,104,119,0.12),-4px_-4px_8px_rgba(255,255,255,0.6)] xl:flex">
               <span className="status-dot" aria-hidden />
-              <span className="label-mono text-[0.6rem] text-muted-foreground">
-                Network operational
+              <span className="label-mono text-[0.55rem] text-muted-foreground">
+                Operational
               </span>
             </div>
             <a
               href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-              className="hidden data-mono text-[0.8rem] text-ink/70 transition-colors hover:text-ink md:block"
+              className="hidden data-mono text-[0.75rem] px-3 py-2 rounded-xl bg-background shadow-[4px_4px_8px_rgba(84,104,119,0.12),-4px_-4px_8px_rgba(255,255,255,0.6)] text-foreground/70 transition-all hover:text-foreground hover:shadow-[6px_6px_12px_rgba(84,104,119,0.15),-6px_-6px_12px_rgba(255,255,255,0.7)] md:block"
             >
               {CONTACT.phone}
             </a>
@@ -96,84 +101,117 @@ export function Navbar() {
               Get a Quote <ArrowGlyph />
             </MagneticButton>
             <button
-              onClick={() => setOpen(true)}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 lg:hidden"
-              aria-label="Open menu"
+              onClick={() => setOpen((v) => !v)}
+              className={cn(
+                "flex h-11 w-11 items-center justify-center rounded-2xl bg-background transition-all lg:hidden",
+                open
+                  ? "shadow-[inset_4px_4px_8px_rgba(84,104,119,0.15),inset_-4px_-4px_8px_rgba(255,255,255,0.7)]"
+                  : "shadow-[6px_6px_12px_rgba(84,104,119,0.15),-6px_-6px_12px_rgba(255,255,255,0.7)]"
+              )}
+              aria-label="Toggle menu"
             >
-              <span className="relative block h-3 w-4">
-                <span className="absolute inset-x-0 top-0 h-px bg-ink" />
-                <span className="absolute inset-x-0 top-1.5 h-px bg-ink" />
-                <span className="absolute inset-x-0 top-3 h-px bg-ink" />
-              </span>
+              <motion.div
+                animate={{ rotate: open ? 45 : 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {open ? (
+                  <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                    <path d="M2 2L14 14M14 2L2 14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+                  </svg>
+                ) : (
+                  <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
+                    <path d="M1 1H17M1 7H17M1 13H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                )}
+              </motion.div>
             </button>
           </div>
+        </div>
         </div>
       </header>
 
       <AnimatePresence>
         {open && (
           <>
-            {/* Overlay */}
+            {/* Invisible backdrop to close on outside click */}
             <motion.div
-              className="fixed inset-0 z-[59] bg-ink/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-[59] lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
               onClick={() => setOpen(false)}
             />
-            
-            {/* Drawer */}
+
+            {/* Floating Card - top right corner, near hamburger button */}
             <motion.div
-              className="surface-dark grain fixed right-0 top-0 z-[60] flex h-full w-[85vw] max-w-md flex-col shadow-2xl lg:hidden"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed top-[4.5rem] right-4 z-[60] w-64 rounded-3xl bg-background overflow-hidden lg:hidden"
+              style={{
+                boxShadow: "16px_16px_32px_rgba(84,104,119,0.25),-8px_-8px_20px_rgba(255,255,255,0.8)",
+                boxShadow: "0 20px 60px rgba(84,104,119,0.25), 0 0 0 1px rgba(84,104,119,0.08)"
+              }}
+              initial={{ opacity: 0, scale: 0.85, y: -12, transformOrigin: "top right" }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.85, y: -12 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex h-[5.5rem] items-center justify-between px-6 border-b border-paper/10">
-                <span className="text-[1.6rem] font-semibold leading-none tracking-[-0.06em] text-paper">
-                  EZA
-                </span>
-                <button
-                  onClick={() => setOpen(false)}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-paper/20 text-paper text-xl"
-                  aria-label="Close menu"
-                >
-                  ✕
-                </button>
-              </div>
-              <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-6 py-8">
-                {NAV.map((item, i) => (
-                  <motion.div
-                    key={item.to}
-                    initial={{ x: 50, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.1 + i * 0.05, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <Link
-                      to={item.to}
-                      className="flex items-baseline gap-3 border-b border-paper/10 py-4 text-[1.4rem] font-medium tracking-[-0.02em] text-paper transition-colors hover:text-lime"
+              {/* Nav Links */}
+              <nav className="px-2 py-2">
+                {NAV.map((item, i) => {
+                  const isActive = pathname === item.to || pathname.startsWith(item.to + "/");
+                  return (
+                    <motion.div
+                      key={item.to}
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.04, duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <span className="label-mono text-[0.7rem] text-lime-dim">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      {item.label}
-                    </Link>
-                  </motion.div>
-                ))}
+                      <Link
+                        to={item.to}
+                        className={cn(
+                          "flex items-center justify-between rounded-2xl px-4 py-3 mb-1 text-sm font-medium transition-all",
+                          isActive
+                            ? "bg-primary text-white shadow-[4px_4px_8px_rgba(255,119,28,0.3)]"
+                            : "text-foreground/70 hover:text-foreground hover:bg-[#F5EDE0] hover:shadow-[inset_3px_3px_6px_rgba(84,104,119,0.1),inset_-3px_-3px_6px_rgba(255,255,255,0.7)]"
+                        )}
+                      >
+                        <span>{item.label}</span>
+                        {isActive && (
+                          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        )}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
               </nav>
-              <div className="flex flex-col gap-4 border-t border-paper/10 p-6">
-                <MagneticButton to="/quote" size="lg" className="w-full">
-                  Get a Quote <ArrowGlyph />
-                </MagneticButton>
-                <a 
-                  href={`tel:${CONTACT.phone.replace(/\s/g, "")}`} 
-                  className="data-mono text-center text-paper/70 hover:text-lime transition-colors"
+
+              {/* Divider */}
+              <div className="mx-4 h-px bg-border" />
+
+              {/* CTA */}
+              <motion.div
+                className="p-3 flex flex-col gap-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.25, duration: 0.25 }}
+              >
+                <Link
+                  to="/quote"
+                  className="flex items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-3 text-sm font-semibold text-white shadow-[6px_6px_12px_rgba(255,119,28,0.25),-3px_-3px_8px_rgba(255,255,255,0.3)] transition-all active:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.15)]"
                 >
+                  Get a Quote →
+                </Link>
+                <a
+                  href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
+                  className="flex items-center justify-center gap-2 rounded-2xl bg-background px-4 py-2.5 text-xs text-muted-foreground shadow-[4px_4px_8px_rgba(84,104,119,0.12),-4px_-4px_8px_rgba(255,255,255,0.6)] transition-all active:shadow-[inset_3px_3px_6px_rgba(84,104,119,0.15),inset_-3px_-3px_6px_rgba(255,255,255,0.7)]"
+                >
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                    <path d="M14.5 11.2v2.3c0 .6-.4 1-.9 1.1-5.4.8-10-3.4-10.9-8.7C2.6 5.4 3 5 3.5 5h2.3c.5 0 .9.4 1 .8.1.8.3 1.5.6 2.2.2.4.1.9-.2 1.2l-1 1c.8 1.4 2 2.6 3.4 3.4l1-1c.3-.3.8-.4 1.2-.2.7.3 1.4.5 2.2.6.4.1.8.5.8 1z" fill="currentColor" className="text-primary"/>
+                  </svg>
                   {CONTACT.phone}
                 </a>
-              </div>
+              </motion.div>
             </motion.div>
           </>
         )}

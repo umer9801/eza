@@ -1,9 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
-import { MagneticButton, ArrowGlyph, SectionLabel, Reveal, Stat } from "@/components/site/primitives";
+import { MagneticButton, ArrowGlyph, SectionLabel, Reveal } from "@/components/site/primitives";
 import { SERVICES } from "@/lib/site-data";
-import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
+import { Zap, Clock, Package, ShoppingCart, Globe } from "lucide-react";
+
+const SERVICE_ICONS = [Zap, Clock, Package, ShoppingCart, Globe];
+
+const CARD_ACCENTS = [
+  { bar: "#FF771C", bg: "rgba(255,119,28,0.06)", stat: "#FF771C" },
+  { bar: "#546877", bg: "rgba(84,104,119,0.06)", stat: "#546877" },
+  { bar: "#FF771C", bg: "rgba(255,119,28,0.06)", stat: "#FF771C" },
+  { bar: "#546877", bg: "rgba(84,104,119,0.06)", stat: "#546877" },
+  { bar: "#FF771C", bg: "rgba(255,119,28,0.06)", stat: "#FF771C" },
+];
 
 export const Route = createFileRoute("/services/")({
   component: ServicesPage,
@@ -51,82 +62,150 @@ function ServicesPage() {
         </section>
 
         {/* Services Grid */}
-        <section className="py-16 md:py-24">
+        <section className="pb-20 md:pb-28">
           <div className="shell edge">
-            <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
-              {SERVICES.map((service, i) => (
-                <Reveal key={service.slug} delay={0.1 * i}>
-                  <Link
-                    to="/services/$slug"
-                    params={{ slug: service.slug }}
-                    className="group block"
-                  >
-                    <article className="flex h-full flex-col rounded-2xl border border-border bg-card p-8 transition-all duration-500 hover:border-champagne/50 hover:bg-card/80 hover:shadow-[0_8px_30px_rgb(200,169,121,0.12)] hover:-translate-y-1">
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <div className="label-mono font-semibold text-champagne-light transition-colors duration-300 group-hover:text-champagne">{service.index}</div>
-                          <h2 className="heading-lg mt-3 font-semibold transition-colors duration-300 group-hover:text-champagne">{service.name}</h2>
-                        </div>
-                        <div className="data-mono text-3xl font-semibold text-champagne opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-2">
-                          →
-                        </div>
-                      </div>
+            <div className="flex flex-col gap-5">
+              {SERVICES.map((service, i) => {
+                const accent = CARD_ACCENTS[i % CARD_ACCENTS.length];
+                const Icon = SERVICE_ICONS[i % SERVICE_ICONS.length];
+                return (
+                  <Reveal key={service.slug} delay={0.08 * i}>
+                    <Link
+                      to="/services/$slug"
+                      params={{ slug: service.slug }}
+                      className="group block"
+                    >
+                      <motion.article
+                        className="relative flex flex-col md:flex-row overflow-hidden rounded-3xl bg-background"
+                        style={{
+                          boxShadow: "8px 8px 20px rgba(84,104,119,0.13), -8px -8px 20px rgba(255,255,255,0.7)"
+                        }}
+                        whileHover={{
+                          y: -4,
+                          boxShadow: "12px 12px 28px rgba(84,104,119,0.18), -12px -12px 28px rgba(255,255,255,0.8)"
+                        }}
+                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        {/* Left accent bar */}
+                        <div
+                          className="hidden md:block w-1.5 flex-shrink-0 rounded-l-3xl transition-all duration-300"
+                          style={{ background: accent.bar }}
+                        />
 
-                      <p className="mt-4 leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-foreground/80">{service.blurb}</p>
-
-                      <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-                        <div className="label-mono text-muted-foreground transition-colors duration-300">
-                          <span className="font-medium text-foreground group-hover:text-champagne">{service.window}</span>
-                        </div>
-                        <div className="label-mono text-muted-foreground transition-colors duration-300">
-                          Coverage: <span className="font-medium text-foreground group-hover:text-champagne">{service.coverage}</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-8 grid grid-cols-3 gap-4 border-t border-border pt-6 transition-colors duration-300 group-hover:border-champagne/30">
-                        {service.stats.map((stat, index) => (
-                          <div 
-                            key={stat.label}
-                            className="transform transition-all duration-300"
-                            style={{ 
-                              transitionDelay: `${index * 50}ms` 
+                        {/* Icon column */}
+                        <div
+                          className="flex items-center justify-center w-full md:w-28 py-6 md:py-0 flex-shrink-0 rounded-t-3xl md:rounded-none"
+                          style={{ background: accent.bg }}
+                        >
+                          <div
+                            className="flex items-center justify-center w-14 h-14 rounded-2xl"
+                            style={{
+                              background: "#F5EDE0",
+                              boxShadow: `4px 4px 10px rgba(84,104,119,0.15), -4px -4px 10px rgba(255,255,255,0.8)`
                             }}
                           >
-                            <div className="data-mono text-lg font-semibold transition-colors duration-300 group-hover:text-champagne">{stat.value}</div>
-                            <div className="label-mono mt-1 text-muted-foreground">
-                              {stat.label}
+                            <Icon size={24} style={{ color: accent.bar }} strokeWidth={1.8} />
+                          </div>
+                        </div>
+
+                        {/* Main content */}
+                        <div className="flex flex-1 flex-col justify-between p-6 md:p-8">
+                          <div className="flex items-start justify-between gap-4">
+                            <div>
+                              <div className="flex items-center gap-2 mb-1">
+                                <span
+                                  className="label-mono text-[0.65rem] font-bold px-2 py-0.5 rounded-full"
+                                  style={{ background: accent.bg, color: accent.bar }}
+                                >
+                                  {service.index}
+                                </span>
+                                <span className="label-mono text-[0.65rem] text-muted-foreground">
+                                  {service.window}
+                                </span>
+                              </div>
+                              <h2 className="text-xl md:text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-primary tracking-tight">
+                                {service.name}
+                              </h2>
+                            </div>
+                            <motion.div
+                              className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-2xl"
+                              style={{
+                                background: "#F5EDE0",
+                                boxShadow: "4px 4px 8px rgba(84,104,119,0.12), -4px -4px 8px rgba(255,255,255,0.6)"
+                              }}
+                              whileHover={{ x: 3 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <span style={{ color: accent.bar }} className="text-lg font-bold">→</span>
+                            </motion.div>
+                          </div>
+
+                          <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:max-w-xl">
+                            {service.blurb}
+                          </p>
+
+                          {/* Stats row */}
+                          <div className="mt-5 flex flex-wrap items-center gap-3">
+                            {service.stats.slice(0, 3).map((stat, si) => (
+                              <div
+                                key={stat.label}
+                                className="flex items-center gap-2 rounded-2xl px-4 py-2.5"
+                                style={{
+                                  background: "#F5EDE0",
+                                  boxShadow: "inset 3px 3px 6px rgba(84,104,119,0.1), inset -3px -3px 6px rgba(255,255,255,0.7)"
+                                }}
+                              >
+                                <span
+                                  className="data-mono text-sm font-bold"
+                                  style={{ color: accent.stat }}
+                                >
+                                  {stat.value}
+                                </span>
+                                <span className="label-mono text-[0.6rem] text-muted-foreground">
+                                  {stat.label}
+                                </span>
+                              </div>
+                            ))}
+                            <div
+                              className="flex items-center gap-1.5 rounded-2xl px-4 py-2.5 ml-auto"
+                              style={{
+                                background: accent.bg,
+                                border: `1px solid ${accent.bar}30`
+                              }}
+                            >
+                              <span className="label-mono text-[0.65rem] font-semibold" style={{ color: accent.bar }}>
+                                Coverage:
+                              </span>
+                              <span className="label-mono text-[0.65rem] text-foreground font-medium">
+                                {service.coverage}
+                              </span>
                             </div>
                           </div>
-                        ))}
-                      </div>
-
-                      <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-champagne">
-                        View service details
-                        <ArrowGlyph className="transition-transform duration-500 group-hover:translate-x-2" />
-                      </div>
-                    </article>
-                  </Link>
-                </Reveal>
-              ))}
+                        </div>
+                      </motion.article>
+                    </Link>
+                  </Reveal>
+                );
+              })}
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="grain relative overflow-hidden bg-ink py-24 md:py-32">
+        <section className="relative overflow-hidden bg-primary/5 py-24 md:py-32">
           <div className="shell edge relative z-[2]">
             <Reveal>
-              <SectionLabel tone="light" index="02">
+              <SectionLabel tone="dark" index="02">
                 Get started
               </SectionLabel>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="display-lg mt-7 max-w-3xl text-paper">
+              <h2 className="display-lg mt-7 max-w-3xl text-foreground">
                 Not sure which service fits?
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="lede mt-6 max-w-2xl text-paper/60">
+              <p className="lede mt-6 max-w-2xl text-muted-foreground">
                 Tell us what you are moving, when it needs to arrive, and what the site constraints
                 are. We will recommend the right service and quote it back within the hour.
               </p>
@@ -146,7 +225,7 @@ function ServicesPage() {
             aria-hidden
             className="pointer-events-none absolute -bottom-24 left-1/2 h-[28rem] w-[60rem] -translate-x-1/2 rounded-[50%] opacity-[0.12]"
             style={{
-              background: "radial-gradient(ellipse at center, var(--lime) 0%, transparent 55%)",
+              background: "radial-gradient(ellipse at center, var(--primary) 0%, transparent 55%)",
             }}
           />
         </section>

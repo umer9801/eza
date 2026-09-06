@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+﻿import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Link } from "@tanstack/react-router";
 import { INDUSTRIES } from "@/lib/site-data";
@@ -33,7 +33,7 @@ export function IndustryCarousel() {
             }}
           >
             {i === active && (
-              <motion.span layoutId="ind-underline" className="absolute -bottom-[17px] left-0 h-px w-full bg-lime-dim" />
+              <motion.span layoutId="ind-underline" className="absolute -bottom-[17px] left-0 h-px w-full bg-primary-dim" />
             )}
             {ind.name}
           </button>
@@ -92,7 +92,7 @@ function IndustryCard({
         <Link
           to="/services/$slug"
           params={{ slug: ind.slug }}
-          className="group/link label-mono flex items-center gap-2 transition-colors hover:text-lime-dim"
+          className="group/link label-mono flex items-center gap-2 transition-colors hover:text-primary"
         >
           Explore <ArrowGlyph />
         </Link>
@@ -125,3 +125,4 @@ function IndustryGlyph({ index, hover }: { index: number; hover: boolean }) {
     </svg>
   );
 }
+

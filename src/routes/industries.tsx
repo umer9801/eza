@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { MagneticButton, ArrowGlyph, SectionLabel, Reveal } from "@/components/site/primitives";
@@ -35,7 +35,7 @@ function IndustriesPage() {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="lede mt-6 max-w-2xl text-muted-foreground">
-                Retail, manufacturing, healthcare, automotive, legal and hospitality — each with
+                Retail, manufacturing, healthcare, automotive, legal and hospitality â€” each with
                 operational patterns we have learned by moving actual freight under real pressure.
               </p>
             </Reveal>
@@ -57,7 +57,7 @@ function IndustriesPage() {
                 <Reveal key={industry.id} delay={i * 0.05}>
                   <article className="grid gap-10 lg:grid-cols-[1fr,1.5fr] lg:gap-16">
                     <div>
-                      <div className="label-mono text-lime-dim">
+                      <div className="label-mono text-primary-dim">
                         {String(i + 1).padStart(2, "0")}
                       </div>
                       <h2 className="display-md mt-3">{industry.name}</h2>
@@ -68,7 +68,7 @@ function IndustriesPage() {
                         <Link
                           to="/services/$slug"
                           params={{ slug: industry.slug }}
-                          className="group inline-flex items-center gap-2 text-sm font-medium text-lime"
+                          className="group inline-flex items-center gap-2 text-sm font-medium text-primary"
                         >
                           View {industry.service}
                           <ArrowGlyph className="transition-transform duration-500 group-hover:translate-x-1" />
@@ -82,8 +82,8 @@ function IndustriesPage() {
                         <p className="mt-3 text-muted-foreground">{industry.problem}</p>
                       </div>
 
-                      <div className="rounded-xl border border-lime/20 bg-lime/5 p-6">
-                        <h3 className="heading-sm text-lime">The solution</h3>
+                      <div className="rounded-xl border border-primary/20 bg-primary/5 p-6">
+                        <h3 className="heading-sm text-primary">The solution</h3>
                         <p className="mt-3">{industry.solution}</p>
                       </div>
 
@@ -122,7 +122,7 @@ function IndustriesPage() {
             <Reveal delay={0.3}>
               <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">01</div>
+                  <div className="data-mono text-3xl text-primary">01</div>
                   <h3 className="heading-md mt-4">Operational patterns</h3>
                   <p className="mt-4 text-sm text-muted-foreground">
                     Every sector has peak periods, cut-off deadlines and failure modes. We schedule
@@ -131,25 +131,25 @@ function IndustriesPage() {
                 </div>
 
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">02</div>
+                  <div className="data-mono text-3xl text-primary">02</div>
                   <h3 className="heading-md mt-4">Site constraints</h3>
                   <p className="mt-4 text-sm text-muted-foreground">
-                    Workshop bays, hospital loading docks, restaurant service windows — each with
+                    Workshop bays, hospital loading docks, restaurant service windows â€” each with
                     access restrictions and receiving protocols that must be understood in advance.
                   </p>
                 </div>
 
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">03</div>
+                  <div className="data-mono text-3xl text-primary">03</div>
                   <h3 className="heading-md mt-4">Compliance requirements</h3>
                   <p className="mt-4 text-sm text-muted-foreground">
-                    Healthcare chain of custody, legal filing deadlines, automotive warranty terms —
+                    Healthcare chain of custody, legal filing deadlines, automotive warranty terms â€”
                     freight that moves under documentation requirements we confirm before collection.
                   </p>
                 </div>
 
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">04</div>
+                  <div className="data-mono text-3xl text-primary">04</div>
                   <h3 className="heading-md mt-4">Consequence awareness</h3>
                   <p className="mt-4 text-sm text-muted-foreground">
                     A late parcel is an apology email. A late component is an idle production line.
@@ -158,16 +158,16 @@ function IndustriesPage() {
                 </div>
 
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">05</div>
+                  <div className="data-mono text-3xl text-primary">05</div>
                   <h3 className="heading-md mt-4">Peak planning</h3>
                   <p className="mt-4 text-sm text-muted-foreground">
-                    Black Friday, January sale, pre-Christmas fulfilment — peak arrives at different
+                    Black Friday, January sale, pre-Christmas fulfilment â€” peak arrives at different
                     times in different sectors, and we scale capacity accordingly.
                   </p>
                 </div>
 
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">06</div>
+                  <div className="data-mono text-3xl text-primary">06</div>
                   <h3 className="heading-md mt-4">Recovery protocols</h3>
                   <p className="mt-4 text-sm text-muted-foreground">
                     When a network service fails or a supplier misses, we know which recovery option
@@ -197,7 +197,7 @@ function IndustriesPage() {
                   <p className="mt-3">
                     A manufacturing customer calls. A pneumatic actuator has failed and the line is
                     static. The replacement part is in their supplier's warehouse in Birmingham, 87
-                    miles away. Production is already losing £2,400 per hour.
+                    miles away. Production is already losing Â£2,400 per hour.
                   </p>
                 </div>
 
@@ -206,7 +206,7 @@ function IndustriesPage() {
                   <p className="mt-3">
                     We quote back within seven minutes. Same-day dedicated, tail-lift vehicle,
                     collection from the supplier within 60 minutes, direct to the factory with no
-                    depot stop. Cost: £187. Alternative: wait until tomorrow and lose another shift.
+                    depot stop. Cost: Â£187. Alternative: wait until tomorrow and lose another shift.
                   </p>
                 </div>
 
@@ -219,12 +219,12 @@ function IndustriesPage() {
                   </p>
                 </div>
 
-                <div className="rounded-xl border border-lime/20 bg-lime/5 p-8">
-                  <div className="label-mono text-lime-dim">11:15</div>
+                <div className="rounded-xl border border-primary/20 bg-primary/5 p-8">
+                  <div className="label-mono text-primary-dim">11:15</div>
                   <p className="mt-3">
                     Part delivered to the factory goods-in. Maintenance fit the actuator and the line
                     restarts before the lunch break. Downtime: 3 hours. Cost of delay avoided:
-                    £4,800.
+                    Â£4,800.
                   </p>
                 </div>
               </div>
@@ -243,20 +243,20 @@ function IndustriesPage() {
         </section>
 
         {/* CTA */}
-        <section className="grain relative overflow-hidden bg-ink py-24 md:py-32">
+        <section className="relative overflow-hidden bg-primary/5 py-24 md:py-32">
           <div className="shell edge relative z-[2]">
             <Reveal>
-              <SectionLabel tone="light" index="04">
+              <SectionLabel tone="dark" index="04">
                 Get started
               </SectionLabel>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="display-lg mt-7 max-w-3xl text-paper">
+              <h2 className="display-lg mt-7 max-w-3xl text-foreground">
                 Logistics that understands your sector.
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="lede mt-6 max-w-2xl text-paper/60">
+              <p className="lede mt-6 max-w-2xl text-muted-foreground">
                 Tell us what you are moving, what the constraints are, and what happens if it is late.
                 We will recommend the right service and quote it back with sector-specific understanding.
               </p>
@@ -276,7 +276,7 @@ function IndustriesPage() {
             aria-hidden
             className="pointer-events-none absolute -bottom-24 left-1/2 h-[28rem] w-[60rem] -translate-x-1/2 rounded-[50%] opacity-[0.12]"
             style={{
-              background: "radial-gradient(ellipse at center, var(--lime) 0%, transparent 55%)",
+              background: "radial-gradient(ellipse at center, var(--primary) 0%, transparent 55%)",
             }}
           />
         </section>
@@ -285,3 +285,4 @@ function IndustriesPage() {
     </>
   );
 }
+

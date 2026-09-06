@@ -1,4 +1,4 @@
-import { useTheme } from "@/lib/theme-context";
+﻿import { useTheme } from "@/lib/theme-context";
 import { motion } from "motion/react";
 
 export function ThemeToggle() {
@@ -7,7 +7,7 @@ export function ThemeToggle() {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="relative flex h-10 w-10 items-center justify-center rounded-full border border-champagne/20 bg-charcoal/50 backdrop-blur-sm transition-all hover:border-champagne/40 hover:bg-charcoal"
+      className="relative flex h-10 w-10 items-center justify-center rounded-full border border-primary/20 bg-[#F5EDE0]/50 backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-[#F5EDE0]"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       aria-label="Toggle theme"
@@ -31,7 +31,7 @@ export function ThemeToggle() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-champagne"
+          className="text-primary"
         >
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
@@ -56,7 +56,7 @@ export function ThemeToggle() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-champagne"
+          className="text-primary"
         >
           <circle cx="12" cy="12" r="5" />
           <line x1="12" y1="1" x2="12" y2="3" />
@@ -72,3 +72,4 @@ export function ThemeToggle() {
     </motion.button>
   );
 }
+

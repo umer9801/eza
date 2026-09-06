@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { CoverageMap } from "@/components/site/CoverageMap";
@@ -61,7 +61,7 @@ function CoveragePage() {
         </section>
 
         {/* Map */}
-        <section className="surface-dark grain py-16 md:py-24">
+        <section className="bg-[#FAF3E7] py-16 md:py-24">
           <div className="shell edge">
             <Reveal>
               <div>
@@ -159,15 +159,15 @@ function CoveragePage() {
             <Reveal delay={0.2}>
               <div className="mt-10 grid gap-6 lg:grid-cols-3">
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">01</div>
+                  <div className="data-mono text-3xl text-primary">01</div>
                   <h3 className="heading-md mt-4">Greater Manchester</h3>
                   <p className="mt-4 text-muted-foreground">
-                    Same-day dedicated collection within 30–60 minutes. Direct routing with no depot
+                    Same-day dedicated collection within 30â€“60 minutes. Direct routing with no depot
                     stop between collection and delivery.
                   </p>
                   <div className="mt-6 space-y-2">
                     <div className="label-mono text-muted-foreground">
-                      Collection: <span className="text-foreground">30–60 min</span>
+                      Collection: <span className="text-foreground">30â€“60 min</span>
                     </div>
                     <div className="label-mono text-muted-foreground">
                       Availability: <span className="text-foreground">24/7</span>
@@ -176,7 +176,7 @@ function CoveragePage() {
                 </div>
 
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">02</div>
+                  <div className="data-mono text-3xl text-primary">02</div>
                   <h3 className="heading-md mt-4">North West</h3>
                   <p className="mt-4 text-muted-foreground">
                     Same-day and next-day services throughout Lancashire, Merseyside, Cheshire and
@@ -184,7 +184,7 @@ function CoveragePage() {
                   </p>
                   <div className="mt-6 space-y-2">
                     <div className="label-mono text-muted-foreground">
-                      Collection: <span className="text-foreground">60–90 min</span>
+                      Collection: <span className="text-foreground">60â€“90 min</span>
                     </div>
                     <div className="label-mono text-muted-foreground">
                       Service: <span className="text-foreground">Same/next-day</span>
@@ -193,7 +193,7 @@ function CoveragePage() {
                 </div>
 
                 <div className="rounded-xl border border-border bg-card p-8">
-                  <div className="data-mono text-3xl text-lime">03</div>
+                  <div className="data-mono text-3xl text-primary">03</div>
                   <h3 className="heading-md mt-4">UK Mainland</h3>
                   <p className="mt-4 text-muted-foreground">
                     Next-day delivery nationwide with pre-09:00 and pre-noon upgrades. Same-day
@@ -242,13 +242,13 @@ function CoveragePage() {
                     <div className="mt-2 space-y-1">
                       <a
                         href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-                        className="block font-medium hover:text-lime"
+                        className="block font-medium hover:text-primary"
                       >
                         {CONTACT.phone}
                       </a>
                       <a
                         href={`mailto:${CONTACT.email}`}
-                        className="block font-medium hover:text-lime"
+                        className="block font-medium hover:text-primary"
                       >
                         {CONTACT.email}
                       </a>
@@ -260,7 +260,7 @@ function CoveragePage() {
                     <p className="mt-2">{CONTACT.hours}</p>
                   </div>
 
-                  <div className="rounded-lg bg-lime/10 p-4">
+                  <div className="rounded-lg bg-primary/10 p-4">
                     <p className="label-mono text-muted-foreground">
                       Out-of-hours dispatch available for urgent same-day movements at published rates.
                     </p>
@@ -272,20 +272,20 @@ function CoveragePage() {
         </section>
 
         {/* CTA */}
-        <section className="grain relative overflow-hidden bg-ink py-24 md:py-32">
+        <section className="relative overflow-hidden bg-primary/5 py-24 md:py-32">
           <div className="shell edge relative z-[2]">
             <Reveal>
-              <SectionLabel tone="light" index="05">
+              <SectionLabel tone="dark" index="05">
                 Get started
               </SectionLabel>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="display-lg mt-7 max-w-3xl text-paper">
+              <h2 className="display-lg mt-7 max-w-3xl text-foreground">
                 Check your route and get a quote.
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="lede mt-6 max-w-2xl text-paper/60">
+              <p className="lede mt-6 max-w-2xl text-muted-foreground">
                 Enter your postcodes and shipment details in the quote calculator. We will show you
                 the distance, transit time and a transparent breakdown of costs.
               </p>
@@ -305,7 +305,7 @@ function CoveragePage() {
             aria-hidden
             className="pointer-events-none absolute -bottom-24 left-1/2 h-[28rem] w-[60rem] -translate-x-1/2 rounded-[50%] opacity-[0.12]"
             style={{
-              background: "radial-gradient(ellipse at center, var(--lime) 0%, transparent 55%)",
+              background: "radial-gradient(ellipse at center, var(--primary) 0%, transparent 55%)",
             }}
           />
         </section>
@@ -314,3 +314,4 @@ function CoveragePage() {
     </>
   );
 }
+
