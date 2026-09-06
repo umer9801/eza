@@ -8,7 +8,7 @@ import { MagneticButton, ArrowGlyph } from "./primitives";
 const NAV = [
   { to: "/services", label: "Services" },
   { to: "/coverage", label: "Coverage" },
-  { to: "/how-it-works", label: "How It Works" },
+  { to: "/how-it-works", label: "Process" },
   { to: "/pricing", label: "Pricing" },
   { to: "/industries", label: "Industries" },
   { to: "/contact", label: "Contact" },

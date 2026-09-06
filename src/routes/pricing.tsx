@@ -349,7 +349,7 @@ function PricingPage() {
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                         className="data-mono mt-4 text-center text-6xl text-primary"
                       >
-                        <AnimatedCounter value={estimatedPrice} prefix="Â£" />
+                        <AnimatedCounter value={estimatedPrice} prefix="£" />
                       </motion.div>
                     </AnimatePresence>
                     <motion.p 

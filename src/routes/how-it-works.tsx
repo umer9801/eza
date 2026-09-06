@@ -1,7 +1,9 @@
 ﻿import { createFileRoute } from "@tanstack/react-router";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import { useRef } from "react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
-import { MagneticButton, ArrowGlyph, SectionLabel, Reveal, Hairline } from "@/components/site/primitives";
+import { MagneticButton, ArrowGlyph, SectionLabel, Reveal } from "@/components/site/primitives";
 import { CONTACT } from "@/lib/site-data";
 
 export const Route = createFileRoute("/how-it-works")({
@@ -106,6 +108,18 @@ const FEATURES = [
 ];
 
 function HowItWorksPage() {
+  const processRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: processRef,
+    offset: ["start 70%", "end 35%"],
+  });
+  const lineProgress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 28,
+    mass: 0.25,
+  });
+  const lineMarkerPosition = useTransform(lineProgress, [0, 1], ["0%", "100%"]);
+
   return (
     <>
       <Navbar />
@@ -147,33 +161,66 @@ function HowItWorksPage() {
         {/* Process Steps */}
         <section className="surface-light py-16 md:py-24">
           <div className="shell edge">
-            <div className="space-y-16 md:space-y-24">
+            <div ref={processRef} className="relative mx-auto max-w-5xl">
+              <div className="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 rounded-full bg-[rgba(84,104,119,0.18)] md:block" aria-hidden>
+                <motion.div
+                  className="absolute inset-x-0 top-0 origin-top rounded-full bg-primary"
+                  style={{ scaleY: lineProgress }}
+                >
+                  <motion.span
+                    className="absolute left-1/2 top-0 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary shadow-[0_0_0_4px_rgba(255,119,28,0.14),0_0_14px_rgba(255,119,28,0.7)]"
+                    style={{ top: lineMarkerPosition }}
+                  />
+                </motion.div>
+              </div>
+
               {PROCESS_STEPS.map((item, i) => (
-                <Reveal key={item.step} delay={i * 0.1}>
-                  <div className="grid gap-10 lg:grid-cols-[1fr,1.5fr] lg:gap-16">
-                    <div>
-                      <div className="label-mono text-primary-dim">{item.step}</div>
-                      <h2 className="display-md mt-3">{item.title}</h2>
-                      <p className="heading-sm mt-2 text-muted-foreground">
-                        {item.subtitle}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-lg leading-relaxed">{item.description}</p>
-                      <ul className="mt-8 space-y-3">
-                        {item.details.map((detail, j) => (
-                          <li key={j} className="flex gap-3">
-                            <span className="data-mono mt-1 text-primary">â†’</span>
-                            <span className="text-muted-foreground">{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
+                <motion.article
+                  key={item.step}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-12%" }}
+                  transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative mb-10 last:mb-0 md:grid md:grid-cols-[minmax(0,1fr)_3rem_minmax(0,1fr)] md:items-start md:gap-6 md:mb-16"
+                >
+                  <div className={i % 2 === 0 ? "md:col-start-3" : "md:col-start-1 md:row-start-1"}>
+                    <div className="rounded-[2rem] border border-[rgba(84,104,119,0.08)] bg-[#F5EDE0] p-6 shadow-[8px_8px_18px_rgba(84,104,119,0.12),-8px_-8px_18px_rgba(255,255,255,0.75)] md:p-8">
+                      <div>
+                        <div className="label-mono text-primary md:hidden">{item.step}</div>
+                        <h2 className="display-md mt-2 md:mt-0">{item.title}</h2>
+                        <p className="heading-sm mt-2 text-muted-foreground">{item.subtitle}</p>
+                        <p className="mt-6 text-lg leading-relaxed text-foreground/90">{item.description}</p>
+                        <ul className="mt-6 space-y-3">
+                          {item.details.map((detail, j) => (
+                            <motion.li
+                              key={j}
+                              initial={{ opacity: 0, x: i % 2 === 0 ? 12 : -12 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true, margin: "-10%" }}
+                              transition={{ duration: 0.4, delay: i * 0.12 + j * 0.08 }}
+                              className="flex gap-3"
+                            >
+                              <span className="data-mono mt-1 text-primary">→</span>
+                              <span className="text-muted-foreground">{detail}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                  {i < PROCESS_STEPS.length - 1 && (
-                    <Hairline className="mt-16 md:mt-24" />
-                  )}
-                </Reveal>
+
+                  <div className="relative hidden min-h-full items-start justify-center md:col-start-2 md:row-start-1 md:flex">
+                    <motion.div
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.35, delay: i * 0.1 + 0.12 }}
+                      className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-[rgba(255,119,28,0.35)] bg-[#F5EDE0] text-xs font-semibold text-primary shadow-[4px_4px_10px_rgba(84,104,119,0.12),-4px_-4px_10px_rgba(255,255,255,0.75)]"
+                    >
+                      {item.step}
+                    </motion.div>
+                  </div>
+                </motion.article>
               ))}
             </div>
           </div>

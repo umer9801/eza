@@ -90,9 +90,9 @@ type MagneticProps = {
 
 const variants: Record<string, string> = {
   lime: "bg-primary text-white shadow-[6px_6px_12px_rgba(84,104,119,0.2),-6px_-6px_12px_rgba(255,255,255,0.8)] hover:shadow-[inset_4px_4px_8px_rgba(84,104,119,0.15),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] active:shadow-[inset_6px_6px_12px_rgba(84,104,119,0.2),inset_-6px_-6px_12px_rgba(255,255,255,0.5)]",
-  ink: "bg-foreground text-background shadow-[6px_6px_12px_rgba(84,104,119,0.2),-6px_-6px_12px_rgba(255,255,255,0.8)] hover:shadow-[inset_4px_4px_8px_rgba(84,104,119,0.15),inset_-4px_-4px_8px_rgba(255,255,255,0.7)]",
-  paper: "bg-background text-foreground shadow-[6px_6px_12px_rgba(84,104,119,0.2),-6px_-6px_12px_rgba(255,255,255,0.8)] hover:shadow-[inset_4px_4px_8px_rgba(84,104,119,0.15),inset_-4px_-4px_8px_rgba(255,255,255,0.7)]",
-  ghost: "bg-transparent text-current border-2 border-current/30 shadow-[4px_4px_8px_rgba(84,104,119,0.1),-4px_-4px_8px_rgba(255,255,255,0.5)] hover:border-current/60 hover:shadow-[6px_6px_12px_rgba(84,104,119,0.15),-6px_-6px_12px_rgba(255,255,255,0.7)]",
+  ink: "bg-foreground text-background shadow-[6px_6px_12px_rgba(84,104,119,0.2),-6px_-6px_12px_rgba(255,255,255,0.8)] hover:shadow-[inset_4px_4px_8px_rgba(84,104,119,0.15),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] active:shadow-[inset_6px_6px_12px_rgba(84,104,119,0.2),inset_-6px_-6px_12px_rgba(255,255,255,0.5)]",
+  paper: "bg-background text-foreground border border-[rgba(84,104,119,0.2)] shadow-[6px_6px_12px_rgba(84,104,119,0.2),-6px_-6px_12px_rgba(255,255,255,0.8)] hover:border-[rgba(84,104,119,0.38)] hover:shadow-[inset_4px_4px_8px_rgba(84,104,119,0.15),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] active:shadow-[inset_6px_6px_12px_rgba(84,104,119,0.2),inset_-6px_-6px_12px_rgba(255,255,255,0.5)]",
+  ghost: "bg-transparent text-current border border-[rgba(84,104,119,0.25)] shadow-[4px_4px_8px_rgba(84,104,119,0.1),-4px_-4px_8px_rgba(255,255,255,0.5)] hover:border-[rgba(84,104,119,0.5)] hover:shadow-[6px_6px_12px_rgba(84,104,119,0.15),-6px_-6px_12px_rgba(255,255,255,0.7)] active:shadow-[inset_4px_4px_8px_rgba(84,104,119,0.15),inset_-4px_-4px_8px_rgba(255,255,255,0.7)]",
 };
 
 export function MagneticButton({

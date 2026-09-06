@@ -82,6 +82,8 @@
   --orange-active: #E66A19;
   --blue-gray-light: #6B7F8F;
   --blue-gray-dark: #3D4C57;
+  --blue-gray-wash: rgba(84, 104, 119, 0.1);
+  --blue-gray-edge: rgba(84, 104, 119, 0.2);
   
   /* Neomorphic shadows */
   --shadow-neumorphic-sm: 
@@ -152,13 +154,17 @@
   html {
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
     background-color: var(--color-background);
+    background-image: radial-gradient(circle at 100% 0%, var(--blue-gray-wash), transparent 32%),
+      radial-gradient(circle at 0% 100%, rgba(255, 119, 28, 0.035), transparent 28%);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "cv02", "cv03", "cv04", "ss01";
+    overflow-x: clip;
   }
 
   ::selection {
@@ -225,6 +231,8 @@
 
 @utility surface-dark {
   background-color: var(--neumorphic-cream);
+  background-image: linear-gradient(135deg, rgba(84, 104, 119, 0.075), transparent 46%);
+  border-top: 1px solid var(--blue-gray-edge);
   color: var(--neumorphic-brown);
   --border: var(--cream-dark);
   --muted-foreground: var(--neumorphic-blue-gray);
@@ -232,6 +240,8 @@
 
 @utility surface-light {
   background-color: var(--cream-light);
+  background-image: radial-gradient(circle at 88% 12%, var(--blue-gray-wash), transparent 38%);
+  border-top: 1px solid var(--blue-gray-edge);
   color: var(--neumorphic-brown);
   --border: var(--cream-dark);
   --muted-foreground: var(--neumorphic-blue-gray);
@@ -240,6 +250,7 @@
 @utility neumorphic-card {
   background: var(--neumorphic-cream);
   border-radius: var(--radius-lg);
+  border: 1px solid var(--blue-gray-edge);
   box-shadow: var(--shadow-neumorphic-md);
   transition: all 0.3s var(--ease-kinetic);
 }
@@ -257,6 +268,67 @@
 
 @utility neumorphic-inset {
   box-shadow: var(--shadow-neumorphic-inset);
+}
+
+@layer components {
+  .neumorphic-panel,
+  .rounded-xl.border.border-border.bg-card,
+  .rounded-2xl.border.border-border.bg-card,
+  .rounded-lg.border.border-border.bg-card,
+  .rounded-xl.border.border-primary\/20.bg-primary\/5,
+  .rounded-2xl.border.border-primary\/20.bg-primary\/5,
+  [class*="rounded-"][class*="bg-"]:not(.rounded-full):not(.bg-primary):not(.bg-transparent):not(.bg-black):not(.bg-white):not([class*="bg-gradient"]) {
+    background: var(--card);
+    border: 1px solid rgba(84, 104, 119, 0.12);
+    box-shadow: var(--shadow-neumorphic-md);
+    transition: box-shadow 0.3s var(--ease-kinetic), transform 0.3s var(--ease-kinetic);
+  }
+
+  .rounded-xl.border.border-primary\/20.bg-primary\/5,
+  .rounded-2xl.border.border-primary\/20.bg-primary\/5,
+  [class*="rounded-"][class*="bg-primary\/5"] {
+    background: rgba(255, 119, 28, 0.05);
+    box-shadow: inset 2px 2px 6px rgba(255, 255, 255, 0.85), inset -2px -2px 6px rgba(84, 104, 119, 0.08), var(--shadow-neumorphic-sm);
+  }
+
+  .rounded-xl.border.border-border.bg-card:hover,
+  .rounded-2xl.border.border-border.bg-card:hover,
+  .rounded-lg.border.border-border.bg-card:hover,
+  .rounded-xl.border.border-primary\/20.bg-primary\/5:hover,
+  .rounded-2xl.border.border-primary\/20.bg-primary\/5:hover,
+  [class*="rounded-"][class*="bg-"]:not(.rounded-full):not(.bg-primary):not(.bg-transparent):not(.bg-black):not(.bg-white):not([class*="bg-gradient"]):hover {
+    box-shadow: var(--shadow-neumorphic-lg);
+    transform: translateY(-2px);
+  }
+
+  input,
+  textarea,
+  select,
+  [data-slot="select-trigger"],
+  [role="combobox"],
+  [data-slot="textarea"] {
+    background: rgba(245, 237, 224, 0.78);
+    border: 1px solid rgba(84, 104, 119, 0.14);
+    box-shadow: inset 4px 4px 8px rgba(84, 104, 119, 0.08), inset -4px -4px 8px rgba(255, 255, 255, 0.72);
+    transition: all 0.2s ease;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus,
+  [data-slot="select-trigger"]:focus,
+  [role="combobox"]:focus,
+  [data-slot="textarea"]:focus {
+    box-shadow: inset 6px 6px 10px rgba(84, 104, 119, 0.12), inset -6px -6px 10px rgba(255, 255, 255, 0.8), 0 0 0 2px rgba(255, 119, 28, 0.15);
+    border-color: rgba(255, 119, 28, 0.33);
+  }
+
+  .bg-primary\/5,
+  .bg-muted\/30,
+  .bg-background,
+  .bg-card {
+    border-color: rgba(84, 104, 119, 0.12);
+  }
 }
 
 @utility grain {
@@ -403,5 +475,22 @@
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --shadow-neumorphic-sm:
+      3px 3px 7px rgba(84, 104, 119, 0.14),
+      -3px -3px 7px rgba(255, 255, 255, 0.72);
+    --shadow-neumorphic-md:
+      5px 5px 12px rgba(84, 104, 119, 0.15),
+      -5px -5px 12px rgba(255, 255, 255, 0.72);
+    --shadow-neumorphic-lg:
+      8px 8px 18px rgba(84, 104, 119, 0.18),
+      -8px -8px 18px rgba(255, 255, 255, 0.76);
+    --shadow-neumorphic-inset:
+      inset 3px 3px 7px rgba(84, 104, 119, 0.14),
+      inset -3px -3px 7px rgba(255, 255, 255, 0.72);
   }
 }
