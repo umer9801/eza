@@ -11,10 +11,11 @@ export function GlobeAnimation() {
 
   return (
     <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 aspect-square w-full max-w-[520px] select-none opacity-70 z-[1]">
-      {/* Orange ambient glow */}
+      {/* Cool ambient glow */}
       <div
         aria-hidden
-        className="absolute inset-0 rounded-full blur-3xl opacity-40 bg-primary/40"
+        className="absolute inset-0 rounded-full blur-3xl opacity-35"
+        style={{ background: "radial-gradient(circle, rgba(84,104,119,0.34) 0%, transparent 70%)" }}
       />
       {/* Blue-gray ambient glow */}
       <div
@@ -29,7 +30,7 @@ export function GlobeAnimation() {
         className="absolute inset-6 rounded-full border-2"
         style={{ animation: "eza-orbit 34s linear infinite", borderColor: "rgba(84,104,119,0.5)" }}
       >
-        <span className="absolute -top-1 left-1/2 size-3 -translate-x-1/2 rounded-full bg-primary shadow-[0_0_20px_currentColor] text-primary" />
+          <span className="absolute -top-1 left-1/2 size-3 -translate-x-1/2 rounded-full bg-[#546877] shadow-[0_0_20px_#546877]" />
       </div>
 
       {/* Inner ring - blue-gray */}
@@ -48,7 +49,7 @@ export function GlobeAnimation() {
       <div className="absolute inset-24 overflow-hidden rounded-full bg-[#F5EDE0]/80 backdrop-blur-sm border-2" style={{ borderColor: "rgba(84,104,119,0.3)" }}>
         <div
           aria-hidden
-          className="absolute inset-x-0 h-14 bg-primary/20"
+            className="absolute inset-x-0 h-14 bg-[#546877]/15"
           style={{ animation: "eza-scan 4.5s linear infinite" }}
         />
 
@@ -84,9 +85,9 @@ export function GlobeAnimation() {
             className="flex items-center gap-2 rounded-full bg-[#F5EDE0]/90 backdrop-blur-sm px-3 py-1.5 text-[11px] tracking-tight text-foreground font-medium shadow-lg"
             style={{ border: "1px solid rgba(84,104,119,0.35)" }}
           >
-            <span
-              className="size-2 rounded-full bg-primary"
-              style={{ animation: "eza-pulse 2s ease-in-out infinite", boxShadow: "0 0 12px #FF771C" }}
+              <span
+              className="size-2 rounded-full bg-[#546877]"
+              style={{ animation: "eza-pulse 2s ease-in-out infinite", boxShadow: "0 0 12px #546877" }}
             />
             {n.label}
           </div>

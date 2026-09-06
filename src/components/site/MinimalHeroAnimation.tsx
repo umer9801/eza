@@ -5,14 +5,14 @@ import { motion } from "motion/react";
 export default function MinimalHeroAnimation() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden bg-background">
-      {/* Orange atmospheric glow */}
+      {/* Cool atmospheric glow */}
       <motion.div
         className="absolute -right-64 top-0"
         style={{
           width: "800px",
           height: "800px",
           borderRadius: "50%",
-          background: `radial-gradient(circle, rgb(255 119 28 / 0.07) 0%, transparent 70%)`,
+          background: `radial-gradient(circle, rgb(84 104 119 / 0.1) 0%, transparent 70%)`,
           filter: "blur(90px)",
         }}
         animate={{ y: [0, 70, 0], scale: [1, 1.2, 1] }}
@@ -33,19 +33,19 @@ export default function MinimalHeroAnimation() {
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
       />
 
-      {/* Floating particles - orange + blue-gray mix */}
+      {/* Floating particles */}
       {[...Array(16)].map((_, i) => {
-        const isBlueGray = i % 4 === 0;
-        const particleColor = isBlueGray ? "rgb(84 104 119)" : "rgb(255 119 28)";
+        const isBright = i % 4 === 0;
+        const particleColor = isBright ? "rgb(107 127 143)" : "rgb(84 104 119)";
         return (
           <motion.div
             key={i}
             className="absolute rounded-full"
             style={{
-              width: isBlueGray ? "7px" : "6px",
-              height: isBlueGray ? "7px" : "6px",
+                width: isBright ? "7px" : "6px",
+                height: isBright ? "7px" : "6px",
               background: particleColor,
-              boxShadow: `0 0 ${isBlueGray ? "20px" : "18px"} ${particleColor}`,
+              boxShadow: `0 0 ${isBright ? "20px" : "18px"} ${particleColor}`,
               left: `${15 + i * 5.5}%`,
               top: `${20 + i * 3.5}%`,
             }}
@@ -65,20 +65,20 @@ export default function MinimalHeroAnimation() {
         );
       })}
 
-      {/* Animated routes - orange + blue-gray */}
+      {/* Animated routes */}
       <svg className="absolute inset-0 h-full w-full">
-        {/* Orange route */}
+        {/* Primary route */}
         <motion.path
           d="M 0,230 Q 480,290 880,230 T 1760,230"
           fill="none"
-          stroke="#FF771C"
+          stroke="#546877"
           strokeWidth="2"
           strokeOpacity="0.35"
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
           transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
         />
-        {/* Blue-gray route */}
+        {/* Secondary route */}
         <motion.path
           d="M 0,380 Q 480,330 880,380 T 1760,380"
           fill="none"
@@ -89,11 +89,11 @@ export default function MinimalHeroAnimation() {
           animate={{ pathLength: 1 }}
           transition={{ duration: 5, repeat: Infinity, ease: "linear", delay: 0.8 }}
         />
-        {/* Lighter orange route */}
+        {/* Lighter route */}
         <motion.path
           d="M 0,520 Q 480,570 880,520 T 1760,520"
           fill="none"
-          stroke="#FF771C"
+          stroke="#6B7F8F"
           strokeWidth="1.5"
           strokeOpacity="0.2"
           initial={{ pathLength: 0 }}
