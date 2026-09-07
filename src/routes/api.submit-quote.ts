@@ -4,7 +4,6 @@ import { getDatabase } from '@/lib/mongodb';
 import { QuoteSubmission, COLLECTIONS } from '@/lib/models';
 import { quoteSchema } from '@/lib/form-validation';
 import { guardSubmission } from '@/lib/request-guard';
-import { calculateQuote } from '@/lib/site-data';
 
 export async function POST({ request }: { request: Request }) {
   const blocked = guardSubmission(request, 'quote');
@@ -13,7 +12,10 @@ export async function POST({ request }: { request: Request }) {
   try {
     const rawData = await request.json();
     const parsed = quoteSchema.safeParse(rawData);
-    if (!parsed.success) return json({ error: 'Invalid form data' }, { status: 400 });
+    if (!parsed.success) {
+      console.error('Validation error:', parsed.error);
+      return json({ error: 'Invalid form data', details: parsed.error.errors }, { status: 400 });
+    }
 
     const data = parsed.data;
     const {
@@ -32,21 +34,11 @@ export async function POST({ request }: { request: Request }) {
       preferredCollectionTime,
     } = data;
 
-    const quoteBreakdown = calculateQuote({
-      size: shipmentSize,
-      speed: serviceSpeed,
-      from: collectionPostcode,
-      to: deliveryPostcode,
-      weightKg,
-      packages: numberOfItems,
-      handling: additionalHandling,
-    });
-
     const quoteSubmission: QuoteSubmission = {
       name,
       email,
       phone,
-      company: data.company || '',
+      company: data.company || 'N/A',
       collectionPostcode: collectionPostcode.toUpperCase(),
       deliveryPostcode: deliveryPostcode.toUpperCase(),
       shipmentSize,
@@ -54,11 +46,11 @@ export async function POST({ request }: { request: Request }) {
       weightKg,
       numberOfItems,
       additionalHandling,
-      estimatedCost: quoteBreakdown.total,
-      quoteBreakdown,
-      specialInstructions,
-      preferredCollectionDate,
-      preferredCollectionTime,
+      estimatedCost: 0, // No calculation, will be manually quoted
+      quoteBreakdown: null,
+      specialInstructions: specialInstructions || '',
+      preferredCollectionDate: preferredCollectionDate || null,
+      preferredCollectionTime: preferredCollectionTime || null,
       createdAt: new Date(),
       status: 'pending',
     };

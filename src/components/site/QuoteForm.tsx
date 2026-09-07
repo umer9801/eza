@@ -108,8 +108,26 @@ export function QuoteForm() {
     setErrorMessage("");
 
     // Validate required fields
-    if (!name || !email || !phone || !collectionPostcode || !deliveryPostcode) {
-      setErrorMessage("Please fill in all required fields");
+    if (!name.trim()) {
+      setErrorMessage("Please enter your full name");
+      setStatus("error");
+      return;
+    }
+    
+    if (!email.trim()) {
+      setErrorMessage("Please enter your email address");
+      setStatus("error");
+      return;
+    }
+    
+    if (!phone.trim()) {
+      setErrorMessage("Please enter your phone number");
+      setStatus("error");
+      return;
+    }
+    
+    if (!collectionPostcode.trim() || !deliveryPostcode.trim()) {
+      setErrorMessage("Please enter both collection and delivery postcodes");
       setStatus("error");
       return;
     }
@@ -123,27 +141,25 @@ export function QuoteForm() {
     }
 
     try {
-      // Direct MongoDB submission
+      // Simple MongoDB submission without quote calculation
       const response = await fetch('/api/submit-quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name,
-          email,
-          phone,
-          company,
-          collectionPostcode,
-          deliveryPostcode,
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.trim(),
+          company: company.trim() || 'N/A',
+          collectionPostcode: collectionPostcode.trim().toUpperCase(),
+          deliveryPostcode: deliveryPostcode.trim().toUpperCase(),
           shipmentSize: size,
           serviceSpeed: speed,
           weightKg,
           numberOfItems,
           additionalHandling: handling,
-          estimatedCost: quote?.total,
-          quoteBreakdown: quote,
-          specialInstructions,
-          preferredCollectionDate,
-          preferredCollectionTime,
+          specialInstructions: specialInstructions.trim() || '',
+          preferredCollectionDate: preferredCollectionDate || '',
+          preferredCollectionTime: preferredCollectionTime || '',
         }),
       });
 
