@@ -3,8 +3,7 @@ import { z } from "zod";
 const postcode = z
   .string()
   .trim()
-  .toUpperCase()
-  .regex(/^[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}$/, "Invalid UK postcode")
+  .min(1, "Postcode is required")
   .max(10);
 
 export const contactSchema = z.object({
@@ -25,9 +24,9 @@ export const contactSchema = z.object({
 });
 
 export const quoteSchema = z.object({
-  name: z.string().trim().min(2).max(100),
-  email: z.string().trim().email().max(254),
-  phone: z.string().trim().min(5).max(40),
+  name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
+  email: z.string().trim().email("Invalid email address").max(254),
+  phone: z.string().trim().min(5, "Phone number must be at least 5 characters").max(40),
   company: z.string().trim().max(150).optional().default(""),
   collectionPostcode: postcode,
   deliveryPostcode: postcode,
