@@ -148,7 +148,7 @@ export function CoverageMap({
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="data-mono mt-6 text-[0.8rem] uppercase tracking-[0.14em] text-muted-foreground">
-                Littleborough -> {city.name}
+                Littleborough → {city.name}
               </div>
               <div className="mt-3 flex items-baseline gap-2">
                 <span className="data-mono text-[3.2rem] leading-none tracking-[-0.04em] text-primary">

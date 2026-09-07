@@ -104,13 +104,13 @@ function ContactPage() {
                     <h2 className="heading-md mb-6">Quick links</h2>
                     <div className="space-y-3">
                       <MagneticButton to="/quote" variant="lime" className="w-full">
-                        Quote Calculator ->
+                        Quote Calculator →
                       </MagneticButton>
                       <MagneticButton to="/services" variant="ghost" className="w-full">
-                        View Services ->
+                        View Services →
                       </MagneticButton>
                       <MagneticButton to="/how-it-works" variant="ghost" className="w-full">
-                        How It Works ->
+                        How It Works →
                       </MagneticButton>
                     </div>
                   </div>
@@ -226,7 +226,7 @@ function ContactPage() {
                       href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
                       className="text-sm font-medium text-primary hover:underline"
                     >
-                      Call now ->
+                      Call now →
                     </a>
                   </div>
                 </div>
@@ -243,7 +243,7 @@ function ContactPage() {
                       href={`mailto:${CONTACT.email}`}
                       className="text-sm font-medium text-primary hover:underline"
                     >
-                      Send email ->
+                      Send email →
                     </a>
                   </div>
                 </div>
@@ -257,7 +257,7 @@ function ContactPage() {
                   </p>
                   <div className="mt-6">
                     <MagneticButton to="/quote" variant="lime" size="md">
-                      Get a quote ->
+                      Get a quote →
                     </MagneticButton>
                   </div>
                 </div>
@@ -288,7 +288,7 @@ function ContactPage() {
             <Reveal delay={0.3}>
               <div className="mt-10 flex flex-wrap gap-4">
                 <MagneticButton to="/quote" size="lg" variant="lime">
-                  Get a Quote ->
+                  Get a Quote →
                 </MagneticButton>
                 <MagneticButton
                   href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
