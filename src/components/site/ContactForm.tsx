@@ -202,7 +202,7 @@ export function ContactForm() {
           htmlFor="consent"
           className="cursor-pointer text-sm leading-relaxed text-muted-foreground"
         >
-          I agree to Kinetic Logistics storing my details and contacting me about this enquiry.
+          I agree to EZA Logistics storing my details and contacting me about this enquiry.
           We will not share your information with third parties. <span className="text-red-500">*</span>
         </label>
       </div>

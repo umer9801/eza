@@ -11,7 +11,7 @@ export const Route = createFileRoute("/how-it-works")({
   head: () => ({
     meta: [
       {
-        title: "How It Works | Kinetic Logistics",
+        title: "How It Works | EZA Logistics",
         description:
           "From quote to delivery in four clear steps. Book online or over the phone, track in real time, and receive proof of delivery the moment it lands.",
       },

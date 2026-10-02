@@ -9,7 +9,7 @@ export const Route = createFileRoute("/quote")({
   head: () => ({
     meta: [
       {
-        title: "Request a Quote | Kinetic Logistics",
+        title: "Request a Quote | EZA Logistics",
         description:
           "Submit your shipping requirements and get a detailed quote. Fill in your details for same-day courier, next-day delivery, freight or international shipping.",
       },

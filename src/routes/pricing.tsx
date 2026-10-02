@@ -13,7 +13,7 @@ export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
       {
-        title: "Transparent Pricing | Kinetic Logistics",
+        title: "Transparent Pricing | EZA Logistics",
         description:
           "Clear, predictable pricing with no hidden fees. Base charge, mileage, service speed and handling charges explained. Use our online calculator for instant quotes.",
       },

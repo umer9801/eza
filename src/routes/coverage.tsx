@@ -10,7 +10,7 @@ export const Route = createFileRoute("/coverage")({
   head: () => ({
     meta: [
       {
-        title: "Coverage & Routes | Kinetic Logistics",
+        title: "Coverage & Routes | EZA Logistics",
         description:
           "Same-day dedicated service across the North West from our Manchester hub. Next-day delivery UK-wide. Check postcode coverage and transit times.",
       },

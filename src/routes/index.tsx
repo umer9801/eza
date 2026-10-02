@@ -35,7 +35,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Kinetic Logistics | Same-Day Courier & Freight Services Manchester",
+        title: "EZA Logistics | Same-Day Courier & Freight Services Manchester",
         description:
           "Manchester logistics: same-day courier, next-day delivery, pallet freight, e-commerce fulfilment and international shipping. 24/7 dispatch from our Trafford Park hub.",
       },

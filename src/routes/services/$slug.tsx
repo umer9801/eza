@@ -18,7 +18,7 @@ export const Route = createFileRoute("/services/$slug")({
     return {
       meta: [
         {
-          title: `${service.name} | Kinetic Logistics`,
+          title: `${service.name} | EZA Logistics`,
           description: `${service.blurb} ${service.window} · ${service.coverage}`,
         },
       ],

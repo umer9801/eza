@@ -21,7 +21,7 @@ export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       {
-        title: "Logistics Services | Kinetic Logistics",
+        title: "Logistics Services | EZA Logistics",
         description:
           "Same-day courier, next-day delivery, pallet freight, e-commerce fulfilment and international shipping from Manchester. Five services for every logistics requirement.",
       },

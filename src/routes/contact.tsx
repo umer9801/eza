@@ -10,7 +10,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       {
-        title: "Contact Us | Kinetic Logistics",
+        title: "Contact Us | EZA Logistics",
         description:
           "Get in touch for quotes, account enquiries or general questions. Call 0161 470 2288, email hello@mftcourier.co.uk or use our contact form. Office hours 07:00-19:00.",
       },

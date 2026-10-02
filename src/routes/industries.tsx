@@ -9,7 +9,7 @@ export const Route = createFileRoute("/industries")({
   head: () => ({
     meta: [
       {
-        title: "Industries We Serve | Kinetic Logistics",
+        title: "Industries We Serve | EZA Logistics",
         description:
           "Sector-specific logistics for retail, manufacturing, healthcare, automotive, legal and hospitality. Solutions built around real operational pressure, not industry averages.",
       },
