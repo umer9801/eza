@@ -12,15 +12,24 @@ export async function POST({ request }: { request: Request }) {
 
   try {
     const data = await request.json();
+    console.log('Contact form data received:', data);
+    
     const parsed = contactSchema.safeParse(data);
-    if (!parsed.success) return json({ error: 'Invalid form data' }, { status: 400 });
+    if (!parsed.success) {
+      console.error('Contact form validation error:', parsed.error.errors);
+      return json({ 
+        error: 'Invalid form data', 
+        details: parsed.error.errors 
+      }, { status: 400 });
+    }
+    
     const { name, email, enquiryType, message, consent, phone, company } = parsed.data;
 
     const contactSubmission: ContactSubmission = {
       name,
       email,
-      phone,
-      company,
+      phone: phone || "",
+      company: company || "",
       enquiryType,
       message,
       consent,
@@ -43,7 +52,10 @@ export async function POST({ request }: { request: Request }) {
     }, { status: 201 });
   } catch (error) {
     console.error('Contact submission error:', error);
-    return json({ error: 'Failed to submit contact form' }, { status: 500 });
+    return json({ 
+      error: 'Failed to submit contact form',
+      message: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 });
   }
 }
 

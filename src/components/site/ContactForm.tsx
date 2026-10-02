@@ -55,7 +55,11 @@ export function ContactForm() {
       });
       
       if (!response.ok) {
-        throw new Error('Submission failed');
+        const errorData = await response.json().catch(() => null);
+        console.error('Contact form error:', errorData);
+        setStatus("error");
+        setErrorMessage(errorData?.error || 'Submission failed. Please try again.');
+        return;
       }
       
       setStatus("success");
@@ -69,6 +73,7 @@ export function ContactForm() {
         consent: false,
       });
     } catch (error) {
+      console.error('Contact form exception:', error);
       setStatus("error");
       setErrorMessage("Something went wrong. Please try again or contact us directly.");
     }
