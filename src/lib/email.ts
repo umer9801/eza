@@ -275,6 +275,7 @@ export async function sendContactEmails(data: ContactSubmission) {
     console.log('   User email:', data.email);
 
     // Send to admin
+    console.log('📤 Sending email to admin...');
     const adminEmail = getContactEmailTemplate(data, true);
     await transporter.sendMail({
       from: process.env.EMAIL_FROM,
@@ -282,21 +283,26 @@ export async function sendContactEmails(data: ContactSubmission) {
       subject: adminEmail.subject,
       html: adminEmail.html,
     });
-    console.log('✓ Admin email sent successfully');
+    console.log('✓ Admin email sent successfully to:', process.env.ADMIN_EMAIL);
 
     // Send to user
+    console.log('📤 Sending email to user...');
     const userEmail = getContactEmailTemplate(data, false);
-    await transporter.sendMail({
+    const userResult = await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to: data.email,
       subject: userEmail.subject,
       html: userEmail.html,
     });
-    console.log('✓ User email sent successfully');
+    console.log('✓ User email sent successfully to:', data.email);
+    console.log('   Message ID:', userResult.messageId);
 
     return { success: true };
   } catch (error) {
-    console.error('✗ Email sending error:', error);
+    console.error('✗ Email sending error:');
+    console.error('   Error type:', error instanceof Error ? error.constructor.name : typeof error);
+    console.error('   Error message:', error instanceof Error ? error.message : error);
+    console.error('   Full error:', error);
     return { success: false, error };
   }
 }
@@ -314,6 +320,7 @@ export async function sendQuoteEmails(data: QuoteSubmission) {
     });
 
     // Send to admin
+    console.log('📤 Sending email to admin...');
     const adminEmail = getQuoteEmailTemplate(data, true);
     await transporter.sendMail({
       from: process.env.EMAIL_FROM,
@@ -321,21 +328,27 @@ export async function sendQuoteEmails(data: QuoteSubmission) {
       subject: adminEmail.subject,
       html: adminEmail.html,
     });
-    console.log('✓ Admin email sent successfully');
+    console.log('✓ Admin email sent successfully to:', process.env.ADMIN_EMAIL);
 
     // Send to user
+    console.log('📤 Sending email to user...');
     const userEmail = getQuoteEmailTemplate(data, false);
-    await transporter.sendMail({
+    const userResult = await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to: data.email,
       subject: userEmail.subject,
       html: userEmail.html,
     });
-    console.log('✓ User email sent successfully');
+    console.log('✓ User email sent successfully to:', data.email);
+    console.log('   Message ID:', userResult.messageId);
+    console.log('   Response:', userResult.response);
 
     return { success: true };
   } catch (error) {
-    console.error('✗ Email sending error:', error);
+    console.error('✗ Email sending error:');
+    console.error('   Error type:', error instanceof Error ? error.constructor.name : typeof error);
+    console.error('   Error message:', error instanceof Error ? error.message : error);
+    console.error('   Full error:', error);
     return { success: false, error };
   }
 }
