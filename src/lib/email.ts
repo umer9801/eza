@@ -290,6 +290,10 @@ function getQuoteEmailTemplate(data: QuoteSubmission, isAdmin: boolean) {
 // Send Contact Form Emails
 export async function sendContactEmails(data: ContactSubmission) {
   try {
+    console.log('📧 Attempting to send contact emails...');
+    console.log('   Admin email:', process.env.ADMIN_EMAIL);
+    console.log('   User email:', data.email);
+
     // Send to admin
     const adminEmail = getContactEmailTemplate(data, true);
     await transporter.sendMail({
@@ -298,6 +302,7 @@ export async function sendContactEmails(data: ContactSubmission) {
       subject: adminEmail.subject,
       html: adminEmail.html,
     });
+    console.log('✓ Admin email sent successfully');
 
     // Send to user
     const userEmail = getContactEmailTemplate(data, false);
@@ -307,10 +312,11 @@ export async function sendContactEmails(data: ContactSubmission) {
       subject: userEmail.subject,
       html: userEmail.html,
     });
+    console.log('✓ User email sent successfully');
 
     return { success: true };
   } catch (error) {
-    console.error('Email sending error:', error);
+    console.error('✗ Email sending error:', error);
     return { success: false, error };
   }
 }
@@ -318,6 +324,15 @@ export async function sendContactEmails(data: ContactSubmission) {
 // Send Quote Request Emails
 export async function sendQuoteEmails(data: QuoteSubmission) {
   try {
+    console.log('📧 Attempting to send quote emails...');
+    console.log('   Admin email:', process.env.ADMIN_EMAIL);
+    console.log('   User email:', data.email);
+    console.log('   SMTP Config:', {
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      user: process.env.SMTP_USER,
+    });
+
     // Send to admin
     const adminEmail = getQuoteEmailTemplate(data, true);
     await transporter.sendMail({
@@ -326,6 +341,7 @@ export async function sendQuoteEmails(data: QuoteSubmission) {
       subject: adminEmail.subject,
       html: adminEmail.html,
     });
+    console.log('✓ Admin email sent successfully');
 
     // Send to user
     const userEmail = getQuoteEmailTemplate(data, false);
@@ -335,10 +351,11 @@ export async function sendQuoteEmails(data: QuoteSubmission) {
       subject: userEmail.subject,
       html: userEmail.html,
     });
+    console.log('✓ User email sent successfully');
 
     return { success: true };
   } catch (error) {
-    console.error('Email sending error:', error);
+    console.error('✗ Email sending error:', error);
     return { success: false, error };
   }
 }

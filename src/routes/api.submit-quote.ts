@@ -60,9 +60,17 @@ export async function POST({ request }: { request: Request }) {
     const result = await db.collection(COLLECTIONS.QUOTES).insertOne(quoteSubmission);
 
     // Send emails (non-blocking)
-    sendQuoteEmails(quoteSubmission).catch((error) => {
-      console.error('Failed to send quote emails:', error);
-    });
+    sendQuoteEmails(quoteSubmission)
+      .then((result) => {
+        if (result.success) {
+          console.log('✓ Quote emails sent successfully to:', quoteSubmission.email);
+        } else {
+          console.error('✗ Failed to send quote emails:', result.error);
+        }
+      })
+      .catch((error) => {
+        console.error('✗ Quote email exception:', error);
+      });
 
     return json({
       success: true,
