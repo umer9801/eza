@@ -118,7 +118,7 @@ function getContactEmailTemplate(data: ContactSubmission, isAdmin: boolean) {
 function getQuoteEmailTemplate(data: QuoteSubmission, isAdmin: boolean) {
   if (isAdmin) {
     return {
-      subject: `New Quote Request - ${data.shipmentSize} ${data.serviceSpeed}`,
+      subject: `New Quote Request - ${data.name}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -131,7 +131,6 @@ function getQuoteEmailTemplate(data: QuoteSubmission, isAdmin: boolean) {
             .field { margin-bottom: 15px; }
             .label { font-weight: bold; color: #FF771C; }
             .value { margin-top: 5px; }
-            .section { margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; }
             .footer { margin-top: 20px; padding-top: 20px; border-top: 2px solid #FF771C; text-align: center; color: #666; font-size: 12px; }
           </style>
         </head>
@@ -141,7 +140,6 @@ function getQuoteEmailTemplate(data: QuoteSubmission, isAdmin: boolean) {
               <h1>New Quote Request</h1>
             </div>
             <div class="content">
-              <h2>Customer Details</h2>
               <div class="field">
                 <div class="label">Name:</div>
                 <div class="value">${data.name}</div>
@@ -154,69 +152,58 @@ function getQuoteEmailTemplate(data: QuoteSubmission, isAdmin: boolean) {
                 <div class="label">Phone:</div>
                 <div class="value">${data.phone}</div>
               </div>
-              ${data.company ? `
+              ${data.company && data.company !== 'N/A' ? `
               <div class="field">
                 <div class="label">Company:</div>
                 <div class="value">${data.company}</div>
               </div>
               ` : ''}
-
-              <div class="section">
-                <h2>Shipment Details</h2>
-                <div class="field">
-                  <div class="label">Collection Postcode:</div>
-                  <div class="value">${data.collectionPostcode}</div>
-                </div>
-                <div class="field">
-                  <div class="label">Delivery Postcode:</div>
-                  <div class="value">${data.deliveryPostcode}</div>
-                </div>
-                <div class="field">
-                  <div class="label">Shipment Size:</div>
-                  <div class="value">${data.shipmentSize}</div>
-                </div>
-                <div class="field">
-                  <div class="label">Service Speed:</div>
-                  <div class="value">${data.serviceSpeed}</div>
-                </div>
-                <div class="field">
-                  <div class="label">Weight:</div>
-                  <div class="value">${data.weightKg} kg</div>
-                </div>
-                <div class="field">
-                  <div class="label">Number of Items:</div>
-                  <div class="value">${data.numberOfItems}</div>
-                </div>
-                ${data.additionalHandling.length > 0 ? `
-                <div class="field">
-                  <div class="label">Additional Handling:</div>
-                  <div class="value">${data.additionalHandling.join(', ')}</div>
-                </div>
-                ` : ''}
+              <div class="field">
+                <div class="label">Collection Postcode:</div>
+                <div class="value">${data.collectionPostcode}</div>
               </div>
-
-              ${data.preferredCollectionDate || data.preferredCollectionTime ? `
-              <div class="section">
-                <h2>Collection Preferences</h2>
-                ${data.preferredCollectionDate ? `
-                <div class="field">
-                  <div class="label">Preferred Date:</div>
-                  <div class="value">${data.preferredCollectionDate}</div>
-                </div>
-                ` : ''}
-                ${data.preferredCollectionTime ? `
-                <div class="field">
-                  <div class="label">Preferred Time:</div>
-                  <div class="value">${data.preferredCollectionTime}</div>
-                </div>
-                ` : ''}
+              <div class="field">
+                <div class="label">Delivery Postcode:</div>
+                <div class="value">${data.deliveryPostcode}</div>
+              </div>
+              <div class="field">
+                <div class="label">Shipment Size:</div>
+                <div class="value">${data.shipmentSize}</div>
+              </div>
+              <div class="field">
+                <div class="label">Service Speed:</div>
+                <div class="value">${data.serviceSpeed}</div>
+              </div>
+              <div class="field">
+                <div class="label">Weight:</div>
+                <div class="value">${data.weightKg} kg</div>
+              </div>
+              <div class="field">
+                <div class="label">Number of Items:</div>
+                <div class="value">${data.numberOfItems}</div>
+              </div>
+              ${data.additionalHandling && data.additionalHandling.length > 0 ? `
+              <div class="field">
+                <div class="label">Additional Handling:</div>
+                <div class="value">${data.additionalHandling.join(', ')}</div>
               </div>
               ` : ''}
-
+              ${data.preferredCollectionDate ? `
+              <div class="field">
+                <div class="label">Preferred Collection Date:</div>
+                <div class="value">${data.preferredCollectionDate}</div>
+              </div>
+              ` : ''}
+              ${data.preferredCollectionTime ? `
+              <div class="field">
+                <div class="label">Preferred Collection Time:</div>
+                <div class="value">${data.preferredCollectionTime}</div>
+              </div>
+              ` : ''}
               ${data.specialInstructions ? `
-              <div class="section">
-                <h2>Special Instructions</h2>
-                <p>${data.specialInstructions}</p>
+              <div class="field">
+                <div class="label">Special Instructions:</div>
+                <div class="value">${data.specialInstructions}</div>
               </div>
               ` : ''}
             </div>
@@ -241,7 +228,6 @@ function getQuoteEmailTemplate(data: QuoteSubmission, isAdmin: boolean) {
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
             .header { background: #FF771C; color: white; padding: 20px; text-align: center; }
             .content { background: #f9f9f9; padding: 20px; margin-top: 20px; }
-            .highlight { background: #fff; padding: 15px; border-left: 4px solid #FF771C; margin: 20px 0; }
             .footer { margin-top: 20px; padding-top: 20px; border-top: 2px solid #FF771C; text-align: center; color: #666; font-size: 12px; }
           </style>
         </head>
@@ -254,22 +240,16 @@ function getQuoteEmailTemplate(data: QuoteSubmission, isAdmin: boolean) {
               <p>Dear ${data.name},</p>
               <p>Thank you for requesting a quote from EZA Logistics. We have received your shipment details and our team is reviewing your requirements.</p>
               
-              <div class="highlight">
-                <strong>Your Shipment Details:</strong><br>
-                From: ${data.collectionPostcode}<br>
-                To: ${data.deliveryPostcode}<br>
-                Size: ${data.shipmentSize}<br>
-                Service: ${data.serviceSpeed}<br>
-                Weight: ${data.weightKg} kg<br>
-                Items: ${data.numberOfItems}
-              </div>
+              <p><strong>Your Quote Details:</strong></p>
+              <p><strong>From:</strong> ${data.collectionPostcode}<br>
+              <strong>To:</strong> ${data.deliveryPostcode}<br>
+              <strong>Size:</strong> ${data.shipmentSize}<br>
+              <strong>Service:</strong> ${data.serviceSpeed}<br>
+              <strong>Weight:</strong> ${data.weightKg} kg<br>
+              <strong>Items:</strong> ${data.numberOfItems}</p>
 
               <p><strong>What happens next?</strong></p>
-              <ul>
-                <li>Our team will review your requirements</li>
-                <li>We'll prepare a detailed quote</li>
-                <li>You'll receive our quote within one working day</li>
-              </ul>
+              <p>Our team will review your requirements and prepare a detailed quote. You'll receive our quote within one working day.</p>
 
               <p>If you need immediate assistance or have urgent requirements, please call us at <strong>0161 470 2288</strong> during office hours (07:00-19:00, Monday to Friday).</p>
               
