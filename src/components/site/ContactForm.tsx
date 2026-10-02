@@ -38,6 +38,11 @@ export function ContactForm() {
       return;
     }
 
+    if (!formData.enquiryType) {
+      setErrorMessage("Please select an enquiry type.");
+      return;
+    }
+
     setStatus("submitting");
     setErrorMessage("");
 
@@ -148,10 +153,13 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="space-y-1">
+      <div className="space-y-2">
         <Label htmlFor="enquiryType">
           Enquiry type <span className="text-red-500">*</span>
         </Label>
+        {!formData.enquiryType && status === "error" && (
+          <p className="text-xs text-red-500">Please select an enquiry type</p>
+        )}
         <div className="grid gap-2 sm:grid-cols-3">
           {ENQUIRY_TYPES.map((type) => {
             const selected = formData.enquiryType === type;
