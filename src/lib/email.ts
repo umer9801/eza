@@ -278,7 +278,7 @@ export async function sendContactEmails(data: ContactSubmission) {
     console.log('📤 Sending email to admin...');
     const adminEmail = getContactEmailTemplate(data, true);
     await transporter.sendMail({
-      from: process.env.EMAIL_FROM,
+      from: `"EZA Logistics Ltd" <${process.env.EMAIL_FROM}>`,
       to: process.env.ADMIN_EMAIL,
       subject: adminEmail.subject,
       html: adminEmail.html,
@@ -289,7 +289,7 @@ export async function sendContactEmails(data: ContactSubmission) {
     console.log('📤 Sending email to user...');
     const userEmail = getContactEmailTemplate(data, false);
     const userResult = await transporter.sendMail({
-      from: process.env.EMAIL_FROM,
+      from: `"EZA Logistics Ltd" <${process.env.EMAIL_FROM}>`,
       to: data.email,
       subject: userEmail.subject,
       html: userEmail.html,
@@ -323,7 +323,7 @@ export async function sendQuoteEmails(data: QuoteSubmission) {
     console.log('📤 Sending email to admin...');
     const adminEmail = getQuoteEmailTemplate(data, true);
     await transporter.sendMail({
-      from: process.env.EMAIL_FROM,
+      from: `"EZA Logistics Ltd" <${process.env.EMAIL_FROM}>`,
       to: process.env.ADMIN_EMAIL,
       subject: adminEmail.subject,
       html: adminEmail.html,
@@ -334,7 +334,7 @@ export async function sendQuoteEmails(data: QuoteSubmission) {
     console.log('📤 Sending email to user...');
     const userEmail = getQuoteEmailTemplate(data, false);
     const userResult = await transporter.sendMail({
-      from: process.env.EMAIL_FROM,
+      from: `"EZA Logistics Ltd" <${process.env.EMAIL_FROM}>`,
       to: data.email,
       subject: userEmail.subject,
       html: userEmail.html,
