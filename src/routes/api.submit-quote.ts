@@ -4,6 +4,7 @@ import { getDatabase } from '@/lib/mongodb';
 import { QuoteSubmission, COLLECTIONS } from '@/lib/models';
 import { quoteSchema } from '@/lib/form-validation';
 import { guardSubmission } from '@/lib/request-guard';
+import { sendQuoteEmails } from '@/lib/email';
 
 export async function POST({ request }: { request: Request }) {
   const blocked = guardSubmission(request, 'quote');
@@ -57,6 +58,11 @@ export async function POST({ request }: { request: Request }) {
 
     const db = await getDatabase();
     const result = await db.collection(COLLECTIONS.QUOTES).insertOne(quoteSubmission);
+
+    // Send emails (non-blocking)
+    sendQuoteEmails(quoteSubmission).catch((error) => {
+      console.error('Failed to send quote emails:', error);
+    });
 
     return json({
       success: true,

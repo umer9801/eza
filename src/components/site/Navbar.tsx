@@ -49,17 +49,11 @@ export function Navbar() {
         >
           <div className="flex items-center justify-between h-14 md:h-16">
           <Link to="/" className="flex items-center gap-2" aria-label="EZA Logistics home">
-            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary shadow-[4px_4px_8px_rgba(84,104,119,0.15),-4px_-4px_8px_rgba(255,255,255,0.7)]">
-              <span className="text-lg font-bold leading-none text-white">E</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-base font-bold leading-none tracking-tight text-foreground">
-                EZA
-              </span>
-              <span className="text-[0.6rem] leading-none text-muted-foreground hidden sm:block">
-                Logistics
-              </span>
-            </div>
+            <img 
+              src="/images/logo.png" 
+              alt="EZA Logistics" 
+              className="h-10 w-auto"
+            />
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">

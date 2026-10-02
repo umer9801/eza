@@ -8,12 +8,13 @@ export function Footer() {
       <div className="shell edge relative z-[2] pb-10 pt-24 md:pt-32">
         <div className="grid gap-14 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           <div>
-            <div className="flex items-baseline gap-3">
-              <span className="text-[2.4rem] font-semibold leading-none tracking-[-0.06em] text-foreground">
-                EZA
-              </span>
-              <span className="label-mono text-muted-foreground">Logistics</span>
-            </div>
+            <Link to="/" className="inline-block">
+              <img 
+                src="/images/logo.png" 
+                alt="EZA Logistics" 
+                className="h-12 w-auto"
+              />
+            </Link>
             <p className="mt-5 max-w-xs text-[1.35rem] font-medium leading-[1.15] tracking-[-0.03em] text-foreground">
               Moving business forward.
             </p>

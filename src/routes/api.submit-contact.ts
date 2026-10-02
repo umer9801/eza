@@ -4,6 +4,7 @@ import { getDatabase } from '@/lib/mongodb';
 import { ContactSubmission, COLLECTIONS } from '@/lib/models';
 import { contactSchema } from '@/lib/form-validation';
 import { guardSubmission } from '@/lib/request-guard';
+import { sendContactEmails } from '@/lib/email';
 
 export async function POST({ request }: { request: Request }) {
   const blocked = guardSubmission(request, 'contact');
@@ -29,6 +30,11 @@ export async function POST({ request }: { request: Request }) {
 
     const db = await getDatabase();
     const result = await db.collection(COLLECTIONS.CONTACTS).insertOne(contactSubmission);
+
+    // Send emails (non-blocking)
+    sendContactEmails(contactSubmission).catch((error) => {
+      console.error('Failed to send contact emails:', error);
+    });
 
     return json({
       success: true,
