@@ -300,6 +300,7 @@ export async function sendContactEmails(data: ContactSubmission) {
     const userResult = await transporter.sendMail({
       from: `"EZA Logistics Ltd" <${process.env.EMAIL_FROM}>`,
       to: data.email,
+      replyTo: process.env.EMAIL_FROM,
       subject: userEmail.subject,
       html: userEmail.html,
     });
@@ -345,6 +346,7 @@ export async function sendQuoteEmails(data: QuoteSubmission) {
     const userResult = await transporter.sendMail({
       from: `"EZA Logistics Ltd" <${process.env.EMAIL_FROM}>`,
       to: data.email,
+      replyTo: process.env.EMAIL_FROM,
       subject: userEmail.subject,
       html: userEmail.html,
     });
