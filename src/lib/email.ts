@@ -11,6 +11,15 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Verify SMTP connection on startup
+transporter.verify(function (error, success) {
+  if (error) {
+    console.error('❌ SMTP connection failed:', error);
+  } else {
+    console.log('✅ SMTP server is ready to send emails');
+  }
+});
+
 // Email Templates
 function getContactEmailTemplate(data: ContactSubmission, isAdmin: boolean) {
   if (isAdmin) {

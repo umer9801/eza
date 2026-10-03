@@ -59,18 +59,19 @@ export async function POST({ request }: { request: Request }) {
     const db = await getDatabase();
     const result = await db.collection(COLLECTIONS.QUOTES).insertOne(quoteSubmission);
 
-    // Send emails (non-blocking)
-    sendQuoteEmails(quoteSubmission)
-      .then((result) => {
-        if (result.success) {
-          console.log('✓ Quote emails sent successfully to:', quoteSubmission.email);
-        } else {
-          console.error('✗ Failed to send quote emails:', result.error);
-        }
-      })
-      .catch((error) => {
-        console.error('✗ Quote email exception:', error);
-      });
+    // Send emails - IMPORTANT: await to ensure they are sent before response
+    try {
+      console.log('🚀 Starting email send process...');
+      const emailResult = await sendQuoteEmails(quoteSubmission);
+      if (emailResult.success) {
+        console.log('✅ Quote emails sent successfully');
+      } else {
+        console.error('⚠️ Quote emails failed:', emailResult.error);
+      }
+    } catch (emailError) {
+      console.error('❌ Quote email exception:', emailError);
+      // Don't fail the request if email fails
+    }
 
     return json({
       success: true,

@@ -40,10 +40,19 @@ export async function POST({ request }: { request: Request }) {
     const db = await getDatabase();
     const result = await db.collection(COLLECTIONS.CONTACTS).insertOne(contactSubmission);
 
-    // Send emails (non-blocking)
-    sendContactEmails(contactSubmission).catch((error) => {
-      console.error('Failed to send contact emails:', error);
-    });
+    // Send emails - IMPORTANT: await to ensure they are sent before response
+    try {
+      console.log('🚀 Starting email send process...');
+      const emailResult = await sendContactEmails(contactSubmission);
+      if (emailResult.success) {
+        console.log('✅ Contact emails sent successfully');
+      } else {
+        console.error('⚠️ Contact emails failed:', emailResult.error);
+      }
+    } catch (emailError) {
+      console.error('❌ Contact email exception:', emailError);
+      // Don't fail the request if email fails
+    }
 
     return json({
       success: true,
